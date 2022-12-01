@@ -1,0 +1,31 @@
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  padding: 0;
+}
+
+.search-form{
+  background-color: yellow;
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.search-result-item{
+  display: flex;
+}
+
+.search-result-item__picture{
+  width: 300px;
+}
+
+.search-result-item__data{
+  flex-grow: 1;
+}

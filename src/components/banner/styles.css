@@ -1,10 +1,17 @@
 .root{
     height: 80vh;
     width: 90%;
-    background-color: green;
+    background-color: var(--clarito);
+    box-shadow: 2px 2px 2px 1px rgb(0 0 0 / 20%);
     margin: 5vh auto;
     border-radius:  20px;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    align-items: center;   
+}
+
+.bannerImage{
+    height: 100%;
+    width: 40%;
+    border-radius: 20px;
 }

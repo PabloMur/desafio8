@@ -10,8 +10,12 @@
     --orange: #FB5607;
     --blue: #3A86FF;
     --purple: #8338EC;
-  /*Fuete Principal*/
-    --font-family: 'Kantumruy Pro', sans-serif;
+    --clarito:#ffe5b5;
+    /*Fuete Principal*/
+    --ui: 'Kantumruy Pro', sans-serif;
+    --titulos:'DM Serif Display', serif;
+    /*Tamaños de Fuente*/
+    --titulos-size:40px;
 }
 
 body{

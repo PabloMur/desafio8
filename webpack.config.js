@@ -16,10 +16,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.svg$/,
-        loader: "svg-inline-loader",
-      },
-      {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
@@ -36,6 +32,14 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.svg$/,
+        loader: "svg-inline-loader",
+      },
+      {
+        type: "asset",
+        test: /\.(png|jpg|gif)$/i,
       },
     ],
   },

@@ -9,9 +9,7 @@ import "../index.css";
 export const MyContext = React.createContext({ username: "" });
 
 function App() {
-  //const username = useUsername();
   return (
-    //<MyContext.Provider value={{ username: username }}>
     <Suspense fallback={<Loader />}>
       <RecoilRoot>
         <BrowserRouter>
@@ -19,7 +17,6 @@ function App() {
         </BrowserRouter>
       </RecoilRoot>
     </Suspense>
-    //</MyContext.Provider>
   );
 }
 

@@ -38,13 +38,13 @@ module.exports = {
         loader: "svg-inline-loader",
       },
       {
-        type: "asset",
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        type: "asset/inline",
       },
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"],
+    extensions: [".tsx", ".js", ".ts", ".png", ".gif", ".jpg", ".css"],
     plugins: [
       new TsconfigPathsPlugin({
         /* options: see below */
@@ -52,7 +52,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.resolve(__dirname, "dist"),
+    publicPath: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
   },
 };

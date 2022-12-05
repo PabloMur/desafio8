@@ -1,12 +1,27 @@
 import React from "react";
 import css from "./index.css";
 
-export function MainButton({ children }) {
+const MainButton = ({ children }) => {
   return <button>{children}</button>;
-}
+};
+
+const CustomButton = ({ children, onClick }) => {
+  return (
+    <button
+      onClick={() => {
+        onClick();
+      }}
+    >
+      {children}
+    </button>
+  );
+};
 
 const MenuButton = ({ children }) => {
   return <button className={css.root}>{children}</button>;
 };
 
-export { MenuButton };
+const LocationPermissionButton = () => {
+  return <button>Aceptar y continuar!</button>;
+};
+export { MenuButton, CustomButton, LocationPermissionButton, MainButton };

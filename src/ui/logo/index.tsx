@@ -1,6 +1,6 @@
 import React from "react";
 import css from "./styles.css";
-import { PataLogo } from "ui/assets/pata";
+import { PataLogo } from "ui/imgComps/pata";
 import { Link } from "react-router-dom";
 
 const Logo = () => {

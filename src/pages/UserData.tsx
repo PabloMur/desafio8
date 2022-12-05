@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { SearchForm } from "../components/SearchForm";
+import { SearchForm } from "../components/search-form/SearchForm";
 import { SearchResultItem } from "../components/search-result-item";
 import { LoginForm } from "../components/LoginForm";
 import { ThankYou } from "../components/ThankYou";
 import { Link } from "react-router-dom";
+import { UserData } from "components/userdata";
 
-function Page2() {
-  return <div>Page Dos</div>;
+function UserDataPage() {
+  return (
+    <div>
+      <UserData />
+    </div>
+  );
 }
 
-export { Page2 };
+export { UserDataPage };

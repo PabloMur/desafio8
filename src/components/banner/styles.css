@@ -1,0 +1,10 @@
+.root{
+    height: 80vh;
+    width: 90%;
+    background-color: green;
+    margin: 5vh auto;
+    border-radius:  20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

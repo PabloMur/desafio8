@@ -19,6 +19,7 @@ module.exports = {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
+        ignore: ["./node_modules/mapbox-gl/dist/mapbox-gl.js"],
       },
       {
         test: /\.css$/i,
@@ -36,6 +37,10 @@ module.exports = {
       {
         test: /\.svg$/,
         loader: "svg-inline-loader",
+      },
+      {
+        test: /\bmapbox-gl-csp-worker.js\b/i,
+        use: { loader: "worker-loader" },
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,

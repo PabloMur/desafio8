@@ -5,12 +5,7 @@ import css from "./layout.css";
 import { Header } from "components/header";
 import { Footer } from "components/footer";
 
-/* <header style={{ border: "solid 1px" }}>
-        <SearchForm />
-      </header> */
-
 function Layout() {
-  console.log(css);
   return (
     <div className={css.root}>
       <Header />

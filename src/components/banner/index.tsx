@@ -7,17 +7,21 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   const [mostrado, setMostrado] = useState({
-    mostrado: true,
+    mostrado: false,
   });
 
   const findPets = () => {
-    setMostrado({ mostrado: false });
-    console.log(mostrado);
+    if (mostrado.mostrado) setMostrado({ mostrado: false });
+    else setMostrado({ mostrado: true });
   };
+
+  useEffect(() => {
+    console.log("useEffect");
+  }, [mostrado]);
 
   return (
     <div className={css.root}>
-      <div className={css.false}>{mostrado.mostrado}</div>
+      <div>{JSON.stringify(mostrado.mostrado)}</div>
       <div className={css.text}>
         <CustomText variant="title">Mascotas Perdidas Cerca Tuyo</CustomText>
         <CustomText variant="paraph">

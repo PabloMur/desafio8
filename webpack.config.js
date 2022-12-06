@@ -19,7 +19,6 @@ module.exports = {
         test: /\.tsx?$/,
         use: "ts-loader",
         exclude: /node_modules/,
-        ignore: ["./node_modules/mapbox-gl/dist/mapbox-gl.js"],
       },
       {
         test: /\.css$/i,

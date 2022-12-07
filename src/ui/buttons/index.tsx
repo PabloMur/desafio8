@@ -7,11 +7,7 @@ const MainButton = ({ children }) => {
 
 const CustomButton = ({ children, onClick }) => {
   return (
-    <button
-      onClick={() => {
-        onClick();
-      }}
-    >
+    <button className={css.customButton} onClick={onClick}>
       {children}
     </button>
   );

@@ -6,8 +6,10 @@ import { Menu } from "ui/menu";
 const Header = () => {
   return (
     <header className={css.root}>
-      <Logo />
-      <Menu />
+      <div className={css.container}>
+        <Logo />
+        <Menu />
+      </div>
     </header>
   );
 };

@@ -1,7 +1,18 @@
 .root{
-    background-color: orange;
     border-radius: 4px;
     padding:  5px 10px;
     text-align: center;
-    border: solid 2px;
+    border: none;
+    font-size: 20px;
+    background-color: var(--purple);
+    color: white;
+}
+
+.customButton{
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px 17px;
+    font-size: var(--ui-size);
+    border-radius: 10px;
 }

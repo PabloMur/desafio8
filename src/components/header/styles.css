@@ -6,7 +6,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding:  0 20px;
     position: relative;
     z-index: 3;
+}
+
+.container{
+    width: 90%;
+    height: 11vh;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
 }

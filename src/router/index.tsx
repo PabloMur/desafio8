@@ -7,6 +7,7 @@ import { Layout } from "components/layout/Layout";
 import { SearchResults } from "pages/SearchResults";
 import { MapboxPage } from "pages/Mapbox";
 import { ReportPage } from "pages/Report";
+import { PetAroundPage } from "pages/PetsAround";
 
 function AppRoutes() {
   return (
@@ -16,6 +17,7 @@ function AppRoutes() {
         <Route path="userdata" element={<UserDataPage />}></Route>
         <Route path="mapbox" element={<MapboxPage />}></Route>
         <Route path="report" element={<ReportPage />}></Route>
+        <Route path="pets-around" element={<PetAroundPage />}></Route>
         <Route path="search/:query" element={<SearchResults />}></Route>
       </Route>
     </Routes>

@@ -1,8 +1,8 @@
 .root{
-    background-color: purple;
     display: flex;
     list-style: none;
-    width: 400px;
+    max-width: 400px;
     justify-content: space-between;
     padding: 0;
+    gap: 10px;
 }

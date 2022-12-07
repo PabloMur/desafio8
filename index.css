@@ -16,6 +16,7 @@
     --titulos:'DM Serif Display', serif;
     /*Tamaños de Fuente*/
     --titulos-size:40px;
+    --ui-size: 20px;
 }
 
 body{

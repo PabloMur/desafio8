@@ -2,3 +2,8 @@
     font-family: var(--titulos);
     font-size: var(--titulos-size);
 }
+
+.p{
+    font-family: var(--ui);
+    font-size: var(--ui-size);
+}

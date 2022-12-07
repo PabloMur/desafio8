@@ -15,20 +15,17 @@ const Banner = () => {
     else setMostrado({ mostrado: true });
   };
 
-  useEffect(() => {
-    console.log("useEffect");
-  }, [mostrado]);
-
   return (
     <div className={css.root}>
-      <div>{JSON.stringify(mostrado.mostrado)}</div>
       <div className={css.text}>
         <CustomText variant="title">Mascotas Perdidas Cerca Tuyo</CustomText>
         <CustomText variant="paraph">
           Con esta app vas a poder ayudar a mascotas a reencontrarse con su
           familia. echa un vistazo!
         </CustomText>
-        <CustomButton onClick={findPets}>Buscar Mascotas</CustomButton>
+        <Link to="pets-around">
+          <CustomButton onClick={findPets}>Buscar Mascotas</CustomButton>
+        </Link>
       </div>
       <div className={css.bannerImage}></div>
     </div>

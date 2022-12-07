@@ -6,7 +6,7 @@ const CustomTitle = ({ children }) => {
 };
 
 const CustomParaph = ({ children }) => {
-  return <p>{children}</p>;
+  return <p className={css.p}>{children}</p>;
 };
 
 const CustomText = ({ children, variant }) => {

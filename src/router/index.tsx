@@ -8,6 +8,7 @@ import { SearchResults } from "pages/SearchResults";
 import { MapboxPage } from "pages/Mapbox";
 import { ReportPage } from "pages/Report";
 import { PetAroundPage } from "pages/PetsAround";
+import { LoginPage } from "pages/LoginPage";
 
 function AppRoutes() {
   return (
@@ -18,6 +19,7 @@ function AppRoutes() {
         <Route path="mapbox" element={<MapboxPage />}></Route>
         <Route path="report" element={<ReportPage />}></Route>
         <Route path="pets-around" element={<PetAroundPage />}></Route>
+        <Route path="login" element={<LoginPage />}></Route>
         <Route path="search/:query" element={<SearchResults />}></Route>
       </Route>
     </Routes>

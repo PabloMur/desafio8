@@ -1,10 +1,10 @@
 import React from "react";
-import { MapboxSearchComp, MyMap } from "components/mapbox";
+import { MapboxSearchComp } from "components/mapbox";
 
 const MapboxPage = () => {
   return (
     <div>
-      <MyMap />
+      <MapboxSearchComp />
     </div>
   );
 };

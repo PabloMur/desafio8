@@ -13,6 +13,14 @@ const CustomButton = ({ children, onClick }) => {
   );
 };
 
+export const LoginButton = ({ children, handleclick }) => {
+  return (
+    <button onClick={handleclick} className={css.login}>
+      {children}
+    </button>
+  );
+};
+
 const MenuButton = ({ children }) => {
   return <button className={css.root}>{children}</button>;
 };

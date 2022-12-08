@@ -45,3 +45,26 @@ export function useSearchResults() {
 
   return results;
 }
+
+export function useUserPosition() {
+  try {
+    const options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function success(pos) {
+      const crd = pos.coords;
+      console.log(crd);
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+  } catch (error) {
+    console.error(error);
+  }
+}

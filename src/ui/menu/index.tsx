@@ -1,5 +1,5 @@
 import React from "react";
-import { MenuButton } from "ui/buttons";
+import { LoginButton, MenuButton } from "ui/buttons";
 import { Link } from "react-router-dom";
 import css from "./styles.css";
 
@@ -12,6 +12,15 @@ const Menu = () => {
         </Link>
         <MenuButton>My Pets</MenuButton>
         <MenuButton>My Reports</MenuButton>
+        <Link to="/login">
+          <LoginButton
+            handleclick={() => {
+              console.log("login");
+            }}
+          >
+            login
+          </LoginButton>
+        </Link>
       </ul>
     </nav>
   );

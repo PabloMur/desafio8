@@ -4,6 +4,7 @@ import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
 import { PopupPermissionBanner } from "components/popupPermission";
 import { Link } from "react-router-dom";
+import { useUserPosition } from "hooks";
 
 const Banner = () => {
   const [mostrado, setMostrado] = useState({
@@ -11,8 +12,7 @@ const Banner = () => {
   });
 
   const findPets = () => {
-    if (mostrado.mostrado) setMostrado({ mostrado: false });
-    else setMostrado({ mostrado: true });
+    useUserPosition();
   };
 
   return (
@@ -24,7 +24,7 @@ const Banner = () => {
           familia. echa un vistazo!
         </CustomText>
         <Link to="pets-around">
-          <CustomButton onClick={findPets}>Buscar Mascotas</CustomButton>
+          <CustomButton onClick={useUserPosition}>Buscar Mascotas</CustomButton>
         </Link>
       </div>
       <div className={css.bannerImage}></div>

@@ -16,3 +16,11 @@
     font-size: var(--ui-size);
     border-radius: 10px;
 }
+
+.login{
+    background-color: var(--blue);
+    color: white;
+    padding: 5px 17px;
+    border: none;
+    border-radius: 10px;
+}

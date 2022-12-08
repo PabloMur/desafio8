@@ -8,7 +8,7 @@ const MapboxSearchComp = () => {
 
   const crearMapa = () => {
     mapboxgl.accessToken =
-      "pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";
+      "cross-env MAPBOX_API_KEY=pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";
     const map = new Map({
       container: mapContainer.current, // container ID
       style: "mapbox://styles/polmur/cl8w32dh4001514oxqd9l8aop", // style URL

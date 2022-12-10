@@ -21,6 +21,14 @@ const Triline = () => {
   );
 };
 
+export const CustomButton = ({ handleclick, children }) => {
+  return (
+    <button className={css.customButton} onClick={handleclick}>
+      {children}
+    </button>
+  );
+};
+
 const BurgerButton = () => {
   const [clicked, setClicked] = useState(false);
 

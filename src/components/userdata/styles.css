@@ -1,3 +1,7 @@
 .root{
-    background-color: purple;
+    background-color: var(--clarito);
+    height: 80vh;
+    width: 90%;
+    border-radius: 20px;
+    margin: 5vh auto;
 }

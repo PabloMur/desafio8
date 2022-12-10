@@ -23,3 +23,15 @@
     background-color: var(--clarito);
     border-radius: 3px;
 }
+
+.customButton{
+    background-color: var(--purple);
+    border: none;
+    display: none;
+}
+
+@media  screen and (max-width:600px) {
+    .customButton{
+        display:block;
+    }
+}

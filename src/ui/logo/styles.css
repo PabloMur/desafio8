@@ -6,6 +6,9 @@
 .link{
     list-style: none;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    height: 70%;
 }
 
 .appName{

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import css from "./styles.css";
 import { Logo } from "ui/logo";
 import { Menu } from "ui/menu";
-import { BurgerButton } from "ui/burger-button";
+import { BurgerButton, CustomButton } from "ui/burger-button";
 
 const Header = () => {
   function MostrarAlgo() {
@@ -13,7 +13,9 @@ const Header = () => {
       <div className={css.container}>
         <Logo />
         <Menu />
-        <BurgerButton />
+        <CustomButton handleclick={MostrarAlgo}>
+          <BurgerButton />
+        </CustomButton>
       </div>
     </header>
   );

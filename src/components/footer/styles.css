@@ -2,4 +2,19 @@
     background-color: black;
     height: 40vh;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.text{
+    color: white;
+}
+
+.find{
+    color: white;
+}
+
+.learn{
+    color: white;
 }

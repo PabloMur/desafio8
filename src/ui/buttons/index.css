@@ -1,10 +1,10 @@
 .root {
   border-radius: 4px;
-  padding: 2px 10px;
+  padding: 4px 10px;
   text-align: center;
   border: none;
   font-size: 20px;
-  background-color: greenyellow;
+  background-color: transparent;
   color: white;
 }
 
@@ -12,18 +12,19 @@
   background-color: black;
   color: white;
   border: none;
-  padding: 2px 17px;
+  padding: 2vh 17px;
   font-size: var(--ui-size);
-  border-radius: 10px;
+  border-radius: 50px;
 }
 
 .login {
-  background-color: var(--blue);
-  color: white;
+  /*background-color: var(--middle-purple);*/
+  background-color: var(--verde);
+  color: var(--dark-purple);
   padding: 2px 17px;
   border: none;
   border-radius: 10px;
-  height: 7vh;
+  height: 6vh;
   width: auto;
   display: flex;
   align-items: center;
@@ -31,18 +32,25 @@
 }
 
 .signup {
-  background-color: var(--dark-bg-color);
+  background-color: var(--dark-purple);
   color: white;
   padding: 2px 17px;
   border: none;
   border-radius: 10px;
-  height: 7vh;
+  height: 6vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: 700;
 }
 
 .link {
   text-decoration: none;
   color: white;
+}
+
+.linkLogin {
+  text-decoration: none;
+  color: black;
+  font-weight: 700;
 }

@@ -18,7 +18,7 @@ const CustomButton = ({ children, onClick }) => {
 export const LoginButton = ({ children, route }) => {
   return (
     <button className={css.login}>
-      <Link className={css.link} to={route}>
+      <Link className={css.linkLogin} to={route}>
         <CustomText variant="p">{children}</CustomText>
       </Link>
     </button>

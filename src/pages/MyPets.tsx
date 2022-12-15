@@ -1,5 +1,10 @@
 import React from "react";
+import { MyPetsContainer } from "components/my-pets/index";
 
 export const MyPetsPage = () => {
-  return <div>Mis Mascotas</div>;
+  return (
+    <div>
+      <MyPetsContainer></MyPetsContainer>
+    </div>
+  );
 };

@@ -1,0 +1,12 @@
+.root{
+    background-color: var(--verde);
+    max-width: 250px;
+    min-height: 30vh;
+    border-radius: 20px;
+}
+.imageContainer{
+    min-height: 25vh;
+    background-color: red;
+    border-radius: 20px;
+    width: 100%;
+}

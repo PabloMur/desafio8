@@ -10,7 +10,7 @@ const Menu = () => {
         <MenuButton route="/userdata">My Data</MenuButton>
         <MenuButton route="/my-pets">My Pets</MenuButton>
         <MenuButton route="/my-reports">My Reports</MenuButton>
-        <LoginButton route="/login">login</LoginButton>
+        <LoginButton route="/login">Login</LoginButton>
         <SignupButton route="/signup">Signup</SignupButton>
       </ul>
     </nav>

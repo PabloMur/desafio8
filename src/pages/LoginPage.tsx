@@ -1,7 +1,12 @@
 import React from "react";
+import { LoginForm } from "components/login-comp";
 
 const LoginPage = () => {
-  return <div>Aca va el formulario de ingreso al sistema</div>;
+  return (
+    <>
+      <LoginForm></LoginForm>
+    </>
+  );
 };
 
 export { LoginPage };

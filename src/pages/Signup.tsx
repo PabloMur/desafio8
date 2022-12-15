@@ -1,7 +1,12 @@
 import React from "react";
+import { SignupForm } from "components/signup-comp";
 
 const SignupPage = () => {
-  return <div>Aca va el formulario de registro</div>;
+  return (
+    <>
+      <SignupForm></SignupForm>
+    </>
+  );
 };
 
 export { SignupPage };

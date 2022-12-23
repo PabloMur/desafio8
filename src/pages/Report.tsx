@@ -1,10 +1,11 @@
 import React from "react";
 import { ReportMaker } from "components/report";
+import { Basic } from "components/testDropzone";
 
 const ReportPage = () => {
   return (
     <div>
-      <ReportMaker />
+      <Basic></Basic>
     </div>
   );
 };

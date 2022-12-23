@@ -18,21 +18,23 @@ const ReportMaker = () => {
     console.log(otraRef.current);
   }, []);
 
-  <div className={css.root}>
-    <form className={css.form}>
-      <label htmlFor="petname">
-        <p>El nombre de tu mascota</p>
-        <TextField name="petname"></TextField>
-      </label>
-      <label htmlFor="petname">
-        <p>Imagen de tu mascota</p>
-        <div ref={inputRef}>Arrastra una imagen</div>
-        <div ref={otraRef}>Test</div>
-      </label>
-      <CustomButton onClick={Mostrar}>Roportar Mascota</CustomButton>
-      <CustomButton onClick={Mostrar}>Cancelar Reporte</CustomButton>
-    </form>
-  </div>;
+  return (
+    <div className={css.root}>
+      <form className={css.form}>
+        <label htmlFor="petname">
+          <p>El nombre de tu mascota</p>
+          <TextField name="petname"></TextField>
+        </label>
+        <label htmlFor="petname">
+          <p>Imagen de tu mascota</p>
+          <div ref={inputRef}>Arrastra una imagen</div>
+          <div ref={otraRef}>Test</div>
+        </label>
+        <CustomButton onClick={Mostrar}>Roportar Mascota</CustomButton>
+        <CustomButton onClick={Mostrar}>Cancelar Reporte</CustomButton>
+      </form>
+    </div>
+  );
 };
 
 export { ReportMaker };

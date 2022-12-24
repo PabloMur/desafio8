@@ -1,5 +1,5 @@
 .root{
-    background-color: var(--verde);
+    background-color: var(--clarito);
     max-width: 250px;
     min-height: 30vh;
     border-radius: 20px;
@@ -9,4 +9,11 @@
     background-color: red;
     border-radius: 20px;
     width: 100%;
+}
+.petDataContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    background-color: red;
 }

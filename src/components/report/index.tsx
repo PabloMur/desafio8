@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef } from "react";
 import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { CustomButton } from "ui/buttons";
-import Dropzone from "dropzone";
-import { useDropzone } from "react-dropzone";
+import { MyDropzone } from "components/testDropzone";
 
 const ReportMaker = () => {
   const inputRef = useRef<HTMLDivElement>(null);
@@ -29,6 +28,7 @@ const ReportMaker = () => {
           <p>Imagen de tu mascota</p>
           <div ref={inputRef}>Arrastra una imagen</div>
           <div ref={otraRef}>Test</div>
+          <MyDropzone />
         </label>
         <CustomButton onClick={Mostrar}>Roportar Mascota</CustomButton>
         <CustomButton onClick={Mostrar}>Cancelar Reporte</CustomButton>

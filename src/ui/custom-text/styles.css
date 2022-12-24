@@ -1,12 +1,15 @@
 .title{
     font-family: var(--titulos);
     font-size: var(--titulos-size);
+    padding: 0;
+    margin: 0;
 }
 
 .p{
     font-family: var(--ui);
     font-size: var(--ui-size);
     padding: 0;
+    margin: 5px 0;
 }
 
 .wp{

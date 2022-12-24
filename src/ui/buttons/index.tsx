@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
 
 const MainButton = ({ children }) => {
-  return <button>{children}</button>;
+  return <button className={css.MainButton}>{children}</button>;
 };
 
 const CustomButton = ({ children, onClick }) => {

@@ -5,6 +5,7 @@ import { LoginForm } from "components/login-comp";
 import { ThankYou } from "../components/ThankYou";
 import { Link } from "react-router-dom";
 import { UserData } from "components/userdata";
+import { CustomText } from "ui/custom-text";
 
 function UserDataPage() {
   return (

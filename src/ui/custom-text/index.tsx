@@ -11,7 +11,7 @@ const CustomParaph = ({ children }) => {
 
 const CustomText = ({ children, variant }) => {
   return (
-    <div>
+    <div className={css.container}>
       {variant === "title" ? (
         <CustomTitle>{children}</CustomTitle>
       ) : (

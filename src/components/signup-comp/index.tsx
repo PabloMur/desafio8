@@ -7,7 +7,7 @@ import { TextField } from "ui/text-field";
 const SignupForm = () => {
   return (
     <div className={css.root}>
-      <form>
+      <form className={css.form}>
         <label>
           <CustomText variant="p">Email</CustomText>
           <TextField name="email"></TextField>

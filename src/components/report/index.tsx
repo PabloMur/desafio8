@@ -3,32 +3,27 @@ import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { CustomButton } from "ui/buttons";
 import { MyDropzone } from "components/testDropzone";
+import { CustomText } from "ui/custom-text";
 
 const ReportMaker = () => {
-  const inputRef = useRef<HTMLDivElement>(null);
-  const otraRef = React.createRef<HTMLDivElement>();
-
   function Mostrar() {
     console.log("mostrar algo");
   }
 
-  useEffect(() => {
-    console.log(inputRef.current);
-    console.log(otraRef.current);
-  }, []);
-
   return (
     <div className={css.root}>
+      <CustomText variant="title">Reportar Mascota</CustomText>
       <form className={css.form}>
-        <label htmlFor="petname">
-          <p>El nombre de tu mascota</p>
+        <label>
+          <CustomText variant="p">El nombre de tu mascota</CustomText>
           <TextField name="petname"></TextField>
         </label>
-        <label htmlFor="petname">
-          <p>Imagen de tu mascota</p>
-          <div ref={inputRef}>Arrastra una imagen</div>
-          <div ref={otraRef}>Test</div>
+        <label className={css.test}>
+          <CustomText variant="p">Imagen de tu mascota</CustomText>
           <MyDropzone />
+        </label>
+        <label>
+          <CustomText variant="p">Zona en la que se perdio</CustomText>
         </label>
         <CustomButton onClick={Mostrar}>Roportar Mascota</CustomButton>
         <CustomButton onClick={Mostrar}>Cancelar Reporte</CustomButton>

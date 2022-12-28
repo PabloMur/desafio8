@@ -53,9 +53,10 @@
   text-decoration: none;
   color: black;
   font-weight: 700;
+  animation: fadein 0.8s ease;
 }
 
-.MainButton{
+.MainButton {
   background-color: black;
   border: none;
   padding: 10px 10px;
@@ -64,4 +65,15 @@
   width: 100%;
   border-radius: 4px;
   font-size: 18px;
+  animation: fadein 0.8s ease;
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
 }

@@ -29,3 +29,7 @@ body{
   padding: 0;
 }
 
+.mapboxgl-ctrl-bottom-right{
+  display: none;
+}
+

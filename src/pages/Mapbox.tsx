@@ -1,11 +1,11 @@
 import React from "react";
-import { MapboxSearchComp } from "components/mapbox";
+import { MapboxPetsAround } from "components/mapbox";
 
 const MapboxPage = () => {
   return (
-    <div>
-      <MapboxSearchComp />
-    </div>
+    <>
+      <MapboxPetsAround></MapboxPetsAround>
+    </>
   );
 };
 

@@ -27,6 +27,7 @@
     "start": "live-server"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-geocoder": "^5.0.1",
     "@types/react": "^18.0.25",
     "css-loader": "^6.7.2",
     "dropzone": "^6.0.0-beta.2",
@@ -37,6 +38,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
+    "react-dropzone-uploader": "^2.11.0",
     "react-map-gl": "^7.0.20",
     "react-mapbox-gl": "^5.1.1",
     "react-router-dom": "^6.4.3",

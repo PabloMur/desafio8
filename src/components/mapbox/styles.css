@@ -1,14 +1,6 @@
-.root{
-    height: 80vh;
-    width: 90%;
-    margin: 5vh auto;
-    border-radius: 25px;
-}
-
-.mapboxgl-ctrl-bottom-right{
-    display: none;
-}
-
-.mapboxgl-ctrl-attrib-button{
-    display: none;
+.root {
+  height: 80vh;
+  width: 90%;
+  margin: 5vh auto;
+  border-radius: 25px;
 }

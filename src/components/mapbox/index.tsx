@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { createMap, initGeocoder, initGeolocate } from "lib/mapbox";
 import mapboxgl from "mapbox-gl";
-import "mapbox-gl/dist/mapbox-gl.css";
 import css from "./styles.css";
 
 const MapboxPetsAround = () => {
@@ -20,12 +19,6 @@ const MapboxPetsAround = () => {
     map.addControl(new mapboxgl.NavigationControl());
   };
   useEffect(() => {
-    // const map = new mapboxgl.Map({
-    //   container: myRef.current, // container ID
-    //   style: "mapbox://styles/polmur/cl8w32dh4001514oxqd9l8aop", // style URL
-    //   center: [-57.5527202, -37.999473], // starting position [lng, lat]-,,
-    //   zoom: 13, // starting zoom
-    // });
     creteMapAndControls();
   }, []);
 

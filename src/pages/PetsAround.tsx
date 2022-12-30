@@ -1,12 +1,9 @@
 import React from "react";
 import { PetsAround } from "components/pets-around";
+import { ReactMapa } from "components/react-map";
 
 const PetAroundPage = () => {
-  return (
-    <div>
-      <PetsAround></PetsAround>
-    </div>
-  );
+  return <ReactMapa></ReactMapa>;
 };
 
 export { PetAroundPage };

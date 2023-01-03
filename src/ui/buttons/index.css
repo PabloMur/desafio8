@@ -68,6 +68,23 @@
   animation: fadein 0.8s ease;
 }
 
+.makeReport {
+  background-color: var(--verde);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+}
+
+.cancelReport {
+  background-color: var(--danger);
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  padding: 5px;
+  color: white;
+}
+
 @keyframes fadein {
   0% {
     opacity: 0;

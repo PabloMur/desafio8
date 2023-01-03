@@ -34,8 +34,15 @@
   text-align: center;
   padding: 20px;
 }
+
 .false {
   background-color: aqua;
   height: 100px;
   width: 300px;
+}
+
+.pcontainer {
+  max-width: 500px;
+  padding: 0;
+  margin-bottom: 10px;
 }

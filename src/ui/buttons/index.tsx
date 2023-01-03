@@ -15,6 +15,18 @@ const CustomButton = ({ children, onClick }) => {
   );
 };
 
+export const ReportButton = ({ onClick, variant }) => {
+  const MakeReportButton = () => {
+    return <button className={css.makeReport}>Reportar Mascota</button>;
+  };
+
+  const CancelReport = () => {
+    return <button className={css.cancelReport}>Cancelar Reporte</button>;
+  };
+
+  return variant == "makeReport" ? <MakeReportButton /> : <CancelReport />;
+};
+
 export const LoginButton = ({ children, route }) => {
   return (
     <Link className={css.linkLogin} to={route}>

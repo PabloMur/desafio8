@@ -1,31 +1,28 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
-import { PopupPermissionBanner } from "components/popupPermission";
-import { Link } from "react-router-dom";
-import { useUserPosition } from "hooks";
+import { popupPermissionCardState } from "atoms";
+import { useRecoilState } from "recoil";
 
 const Banner = () => {
-  const [mostrado, setMostrado] = useState({
-    mostrado: false,
-  });
+  const [value, setValue] = useRecoilState(popupPermissionCardState);
 
-  const findPets = () => {
-    useUserPosition();
+  const MostrarPopup = () => {
+    setValue({ mostrado: true });
   };
 
   return (
     <div className={css.root}>
       <div className={css.text}>
         <CustomText variant="title">Mascotas Perdidas Cerca Tuyo</CustomText>
-        <CustomText variant="paraph">
-          Con esta app vas a poder ayudar a mascotas a reencontrarse con su
-          familia. echa un vistazo!
-        </CustomText>
-        <Link to="pets-around">
-          <CustomButton onClick={useUserPosition}>Buscar Mascotas</CustomButton>
-        </Link>
+        <div className={css.pcontainer}>
+          <CustomText variant="paraph">
+            Con esta app vas a poder ayudar a mascotas a reencontrarse con su
+            familia. echa un vistazo!
+          </CustomText>
+        </div>
+        <CustomButton onClick={MostrarPopup}>Buscar Mascotas</CustomButton>
       </div>
       <div className={css.bannerImage}></div>
     </div>

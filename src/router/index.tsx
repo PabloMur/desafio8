@@ -11,6 +11,7 @@ import { PetAroundPage } from "pages/PetsAround";
 import { LoginPage } from "pages/LoginPage";
 import { MyPetsPage } from "pages/MyPets";
 import { SignupPage } from "pages/Signup";
+import { PasswordPage } from "pages/PasswordPage";
 
 function AppRoutes() {
   return (
@@ -24,6 +25,7 @@ function AppRoutes() {
         <Route path="pets-around" element={<PetAroundPage />}></Route>
         <Route path="login" element={<LoginPage />}></Route>
         <Route path="signup" element={<SignupPage />}></Route>
+        <Route path="password" element={<PasswordPage />}></Route>
         <Route path="search/:query" element={<SearchResults />}></Route>
       </Route>
     </Routes>

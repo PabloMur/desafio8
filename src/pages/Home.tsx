@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
-
-import { Link, useParams } from "react-router-dom";
+import React from "react";
 import { Banner } from "components/banner";
+import { PopupPermissionBanner } from "components/popupPermission";
 
 function Home() {
-  const params = useParams();
   return (
-    <div>
+    <>
       <Banner />
-    </div>
+      <PopupPermissionBanner></PopupPermissionBanner>
+    </>
   );
 }
 

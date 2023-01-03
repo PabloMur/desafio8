@@ -23,6 +23,11 @@
   background-color: aqua;
 }
 
+.label {
+  background-color: red;
+  width: 100%;
+}
+
 .test {
   background-color: orange;
 }

@@ -10,9 +10,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  border-radius: 4px;
 }
 
 .dragZone {
+  border-radius: 4px;
   border: dashed 2px rgba(0, 0, 0, 0.603);
   width: 90%;
   height: 90%;

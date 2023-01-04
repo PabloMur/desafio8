@@ -1,0 +1,12 @@
+.root {
+  height: 80vh;
+  width: 90%;
+  margin: 5vh auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gif {
+  border: none;
+}

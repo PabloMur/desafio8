@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { CustomButton, MainButton } from "ui/buttons";
 import css from "./styles.css";
-import { popupPermissionCardState } from "atoms";
+import { popupPermissionCardState } from "atoms/atoms";
 import { useRecoilState } from "recoil";
 import { EquisComp } from "ui/equis";
 import { Link } from "react-router-dom";

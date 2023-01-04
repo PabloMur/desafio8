@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
-import { popupPermissionCardState } from "atoms";
+import { popupPermissionCardState } from "atoms/atoms";
 import { useRecoilState } from "recoil";
 
 const Banner = () => {

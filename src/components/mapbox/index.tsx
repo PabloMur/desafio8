@@ -2,10 +2,10 @@ import React, { useRef, useEffect } from "react";
 import { createMap, initGeocoder, initGeolocate } from "lib/mapbox";
 import mapboxgl from "mapbox-gl";
 import css from "./styles.css";
-import { userLocation } from "atoms";
+import { userLocation } from "atoms/atoms";
 import { useRecoilState } from "recoil";
 
-const MapboxPetsAround = () => {
+const MapboxPetsAround = ({ variant }) => {
   let myRef = useRef<HTMLDivElement>(null);
   const [value, setValue] = useRecoilState(userLocation);
 
@@ -22,7 +22,11 @@ const MapboxPetsAround = () => {
     creteMapAndControls();
   }, []);
 
-  return <div className={css.root} ref={myRef}></div>;
+  return variant == "finder" ? (
+    <div className={css.root} ref={myRef}></div>
+  ) : (
+    <div className={css.reportMap} ref={myRef}></div>
+  );
 };
 
 export { MapboxPetsAround };

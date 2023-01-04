@@ -8,7 +8,7 @@ export const popupPermissionCardState = atom({
 });
 
 export const userLogged = atom({
-  key: "userLoigged",
+  key: "userLogged",
   default: false,
 });
 

@@ -16,24 +16,12 @@
 
 .form {
   height: 100%;
-  padding: 0 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: aqua;
+  justify-content: center;
 }
 
 .label {
-  background-color: red;
   width: 100%;
-}
-
-.test {
-  background-color: orange;
-}
-
-.dropzone {
-  height: 300px;
-  width: 100%;
-  background-color: pink;
 }

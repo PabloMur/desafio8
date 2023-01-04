@@ -12,8 +12,10 @@ export const userLogged = atom({
   default: false,
 });
 
-// BORRAR ESTO ANTES DE ENTREGAR
-// export const test = atom({
-//   key: "test",
-//   default: "mostrado",
-// });
+export const userLocation = atom({
+  key: "useLocation",
+  default: {
+    lat: -38.0106565,
+    lng: -57.5556473,
+  },
+});

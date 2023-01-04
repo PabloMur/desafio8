@@ -21,7 +21,14 @@ export const ReportButton = ({ onClick, variant }) => {
   };
 
   const CancelReport = () => {
-    return <button className={css.cancelReport}>Cancelar Reporte</button>;
+    function reload() {
+      location.reload();
+    }
+    return (
+      <button className={css.cancelReport} onClick={reload}>
+        Cancelar Reporte
+      </button>
+    );
   };
 
   return variant == "makeReport" ? <MakeReportButton /> : <CancelReport />;

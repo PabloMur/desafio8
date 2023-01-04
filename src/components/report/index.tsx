@@ -1,34 +1,33 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { CustomButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
-import { initDropzone } from "lib/dropzone";
 import { MapboxPetsAround } from "components/mapbox";
 import { ReportButton } from "ui/buttons";
+import { DropzoneComp } from "components/dropzone";
 
 const ReportMaker = () => {
+  function onSubmit(e) {
+    e.preventDefault();
+    console.log("hola desde el form");
+  }
+
   function Mostrar() {
     console.log("mostrar algo");
   }
 
-  const dropzoneRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    initDropzone(dropzoneRef.current);
-  }, []);
-
   return (
     <div className={css.root}>
       <CustomText variant="title">Reportar Mascota</CustomText>
-      <form className={css.form}>
+      <form className={css.form} onSubmit={onSubmit}>
         <label className={css.label}>
           <CustomText variant="p">El nombre de tu mascota</CustomText>
           <TextField name="petname"></TextField>
         </label>
         <label className={css.label}>
           <CustomText variant="p">Imagen de tu mascota</CustomText>
-          <div className={css.dropzone} ref={dropzoneRef}></div>
+          <DropzoneComp></DropzoneComp>
         </label>
         <label className={css.label}>
           <CustomText variant="p">Zona en la que se perdio</CustomText>

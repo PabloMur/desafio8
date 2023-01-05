@@ -17,7 +17,11 @@ const CustomButton = ({ children, onClick }) => {
 
 export const ReportButton = ({ onClick, variant }) => {
   const MakeReportButton = () => {
-    return <button className={css.makeReport}>Reportar Mascota</button>;
+    return (
+      <button onClick={onClick} className={css.makeReport}>
+        Reportar Mascota
+      </button>
+    );
   };
 
   const CancelReport = () => {
@@ -67,4 +71,5 @@ const MenuButton = ({ children, route }) => {
 const LocationPermissionButton = () => {
   return <button>Aceptar y continuar!</button>;
 };
+
 export { MenuButton, CustomButton, LocationPermissionButton, MainButton };

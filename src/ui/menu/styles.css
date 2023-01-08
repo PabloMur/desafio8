@@ -1,20 +1,21 @@
-.root{
-    display: flex;
-    max-width: 620px;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+.root {
+  display: flex;
+  max-width: 620px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
 }
 
 @media screen and (max-width: 600px) {
-    .root{
-        background-color: var(--purple);
-        position: absolute;
-        right: 0; 
-        top:9vh;
-        flex-direction: column;
-        height: 85vh;
-        width: 50vw;
-        padding: 10px;
-    }
+  .root {
+    background-color: var(--purple);
+    position: absolute;
+    right: 0;
+    top: 11vh;
+    flex-direction: column;
+    height: 89vh;
+    width: 50vw;
+    padding: 77px;
+    margin: 0;
+  }
 }

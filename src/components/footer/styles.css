@@ -1,20 +1,32 @@
-.root{
-    background-color: #230c33;
-    height: 40vh;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.root {
+  background-color: #230c33;
+  height: 40vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.text{
-    color: white;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
-.find{
-    color: white;
+.text {
+  color: white;
 }
 
-.learn{
-    color: white;
+.find,
+.learn {
+  color: white;
+  display: flex;
+  background-color: red;
+  align-items: center;
+  width: 100%;
+}
+
+ul {
+  display: flex;
 }

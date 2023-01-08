@@ -8,6 +8,9 @@ import {
   useSetRecoilState,
 } from "recoil";
 
+import { userLogged } from "atoms/userAtoms";
+import { APICheckEmail } from "lib/api";
+
 // export function useSearchResults() {
 //   const params = useParams();
 //   const setQueryValue = useSetRecoilState(queryState);
@@ -21,7 +24,10 @@ import {
 //   return results;
 // }
 
-export function userLogged() {}
+export function useUserLogged() {
+  const [value, setValue] = useRecoilState(userLogged);
+  return value.logged;
+}
 
 export function useUserPosition() {
   try {
@@ -45,3 +51,7 @@ export function useUserPosition() {
     console.error(error);
   }
 }
+
+export const useCheckUserEmail = (email: string) => {
+  return APICheckEmail(email);
+};

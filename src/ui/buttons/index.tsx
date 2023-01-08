@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./index.css";
-import { Link } from "react-router-dom";
+import { Link, redirect } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
+import { useUserLogged } from "hooks";
 
 const MainButton = ({ children }) => {
   return <button className={css.MainButton}>{children}</button>;
@@ -59,13 +60,29 @@ export const SignupButton = ({ children, route }) => {
 };
 
 const MenuButton = ({ children, route }) => {
-  return (
-    <button className={css.root}>
-      <Link className={css.link} to={route}>
-        {children}
-      </Link>
-    </button>
-  );
+  const logged = useUserLogged();
+
+  const GoToLoginComp = () => {
+    return (
+      <button className={css.root}>
+        <Link className={css.link} to="/login">
+          {children}
+        </Link>
+      </button>
+    );
+  };
+
+  const MenuButtonAction = () => {
+    return (
+      <button className={css.root}>
+        <Link className={css.link} to={route}>
+          {children}
+        </Link>
+      </button>
+    );
+  };
+
+  return logged ? <MenuButtonAction /> : <GoToLoginComp />;
 };
 
 const LocationPermissionButton = () => {

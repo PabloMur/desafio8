@@ -4,7 +4,7 @@ import { MapboxPetsAround } from "components/mapbox";
 const MapboxPage = () => {
   return (
     <>
-      <MapboxPetsAround></MapboxPetsAround>
+      <MapboxPetsAround variant="finder"></MapboxPetsAround>
     </>
   );
 };

@@ -7,6 +7,16 @@ export const userLogged = atom({
   },
 });
 
+export const userEmail = atom({
+  key: "userEmail",
+  default: "example@gmail.com",
+});
+
+export const userToken = atom({
+  key: "userToken",
+  default: "token",
+});
+
 export const userLocation = atom({
   key: "useLocation",
   default: {

@@ -9,7 +9,7 @@ import {
 } from "recoil";
 
 import { userLogged } from "atoms/userAtoms";
-import { APICheckEmail } from "lib/api";
+import { APICheckEmail, APIGetToken } from "lib/api";
 
 // export function useSearchResults() {
 //   const params = useParams();
@@ -53,5 +53,10 @@ export function useUserPosition() {
 }
 
 export const useCheckUserEmail = (email: string) => {
+  localStorage.setItem("test", "test");
   return APICheckEmail(email);
+};
+
+export const useGetUserToken = (params) => {
+  return APIGetToken(params);
 };

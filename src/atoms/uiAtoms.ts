@@ -13,3 +13,10 @@ export const desplegarMenuAtom = atom({
     mostrado: false,
   },
 });
+
+export const loaderAtom = atom({
+  key: "activarDesactivarLoader",
+  default: {
+    mostrado: false,
+  },
+});

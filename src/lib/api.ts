@@ -14,6 +14,29 @@ export const APICheckEmail = async (email) => {
       }
     );
     const response = await fetching.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// obtener el Token del usuario -> https://desafio7.onrender.com/auth/token
+export const APIGetToken = async (params: {
+  email: string;
+  password: string;
+}) => {
+  try {
+    const { email, password } = params;
+
+    const fetching = await fetch("https://desafio7.onrender.com/auth/token", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const response = await fetching.json();
     console.log(response);
     return response;
   } catch (error) {
@@ -21,12 +44,61 @@ export const APICheckEmail = async (email) => {
   }
 };
 
-// method: "put",
-// mode: "cors",
-// headers: {
-//   Authorization: `bearer ${token}`,
-//   "Content-Type": "application/json",
-// },
-// body: JSON.stringify({
-//   password: password,
-// }),
+//crear user -> https://desafio7.onrender.com/auth
+
+export const APICreateUser = async (params: {
+  fullname: string;
+  email: string;
+  password: string;
+}) => {
+  try {
+    const { fullname, email, password } = params;
+
+    const fetching = await fetch("https://desafio7.onrender.com/auth", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ fullname, email, password }),
+    });
+    const response = await fetching.json();
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+//crear user -> https://desafio7.onrender.com/pet
+
+export const APICreatePet = async (params: {
+  fullname: string;
+  zone: string;
+  lat: number;
+  lng: number;
+  status: string;
+  image: string;
+  token: string;
+}) => {
+  try {
+    const { fullname, zone, lat, lng, status, image, token } = params;
+
+    const fetching = await fetch("https://desafio7.onrender.com/auth", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${token}`,
+      },
+      body: JSON.stringify({ fullname, zone, lat, lng, status, image }),
+    });
+    const response = await fetching.json();
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// me quede en crear report send mail

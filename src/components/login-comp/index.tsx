@@ -5,14 +5,15 @@ import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import { useCheckUserEmail } from "hooks";
 import { useNavigate } from "react-router-dom";
-import { useGoTo } from "hooks/uiHooks";
 
 const LoginForm = () => {
-  const checkEmailFromField = async (e) => {
-    let goTo = useNavigate();
+  const goTo = useNavigate();
 
+  const checkEmailFromField = async (e) => {
     e.preventDefault();
-    let check = await useCheckUserEmail(e.target.email.value);
+    console.log("prendido");
+    const check = await useCheckUserEmail(e.target.email.value);
+    console.log("apagado");
     check ? goTo("/password") : goTo("/signup");
   };
 

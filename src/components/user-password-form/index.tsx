@@ -10,11 +10,11 @@ const UserPasswordForm = () => {
       <form className={css.root}>
         <label htmlFor="">
           <CustomText variant="p">Nueva Contraseña</CustomText>
-          <TextField name="contUno"></TextField>
+          <TextField type="password" name="contUno"></TextField>
         </label>
         <label htmlFor="">
           <CustomText variant="p">Repite Contraseña</CustomText>
-          <TextField name="contDos"></TextField>
+          <TextField type="password" name="contDos"></TextField>
         </label>
         <MainButton>Modificar Contraseña</MainButton>
       </form>

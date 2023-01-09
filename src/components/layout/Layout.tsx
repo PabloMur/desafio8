@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
-import { SearchForm } from "../search-form/SearchForm";
+import React from "react";
 import css from "./layout.css";
+import { Outlet } from "react-router-dom";
 import { Header } from "components/header";
 import { Footer } from "components/footer";
 

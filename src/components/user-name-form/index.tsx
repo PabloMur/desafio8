@@ -12,7 +12,7 @@ const UserNameForm = () => {
   return (
     <form className={css.root} onSubmit={handleSubmit}>
       <CustomText variant="p">Nombre</CustomText>
-      <TextField name="username"></TextField>
+      <TextField type="text" name="username"></TextField>
       <MainButton>Guardar Nombre</MainButton>
     </form>
   );

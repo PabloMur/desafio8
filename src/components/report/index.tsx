@@ -23,7 +23,7 @@ const ReportMaker = () => {
       <form className={css.form} onSubmit={onSubmit}>
         <label className={css.label}>
           <CustomText variant="p">El nombre de tu mascota</CustomText>
-          <TextField name="petname"></TextField>
+          <TextField type="text" name="petname"></TextField>
         </label>
         <label className={css.label}>
           <CustomText variant="p">Imagen de tu mascota</CustomText>
@@ -32,7 +32,7 @@ const ReportMaker = () => {
         <label className={css.label}>
           <CustomText variant="p">Zona en la que se perdio</CustomText>
           <div>
-            <MapboxPetsAround />
+            <MapboxPetsAround variant="report" />
           </div>
         </label>
         <ReportButton variant="makeReport" onClick={Mostrar}></ReportButton>

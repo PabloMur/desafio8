@@ -10,15 +10,15 @@ const SignupForm = () => {
       <form className={css.form}>
         <label>
           <CustomText variant="p">Email</CustomText>
-          <TextField name="email"></TextField>
+          <TextField type="text" name="email"></TextField>
         </label>
         <label>
           <CustomText variant="p">Contraseña</CustomText>
-          <TextField name="contUno"></TextField>
+          <TextField type="password" name="contUno"></TextField>
         </label>
         <label>
           <CustomText variant="p">Repite la Contraseña</CustomText>
-          <TextField name="contDos"></TextField>
+          <TextField type="password" name="contDos"></TextField>
         </label>
         <MainButton>Crear cuenta</MainButton>
       </form>

@@ -6,8 +6,6 @@ import { RecoilRoot } from "recoil";
 import { Loader } from "ui/loader";
 import "../index.css";
 
-export const MyContext = React.createContext({ username: "" });
-
 function App() {
   return (
     <Suspense fallback={<Loader />}>

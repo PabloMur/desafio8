@@ -3,6 +3,8 @@ import css from "./index.css";
 import { Link, redirect } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
 import { useUserLogged } from "hooks";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { routeAtom } from "atoms/uiAtoms";
 
 const MainButton = ({ children }) => {
   return <button className={css.MainButton}>{children}</button>;
@@ -63,8 +65,15 @@ const MenuButton = ({ children, route }) => {
   const logged = useUserLogged();
 
   const GoToLoginComp = () => {
+    const setRoute = useSetRecoilState(routeAtom);
     return (
-      <button className={css.root}>
+      <button
+        className={css.root}
+        onClick={() => {
+          setRoute(route);
+          console.log(useRecoilValue(routeAtom));
+        }}
+      >
         <Link className={css.link} to="/login">
           {children}
         </Link>

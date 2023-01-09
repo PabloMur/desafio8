@@ -25,7 +25,7 @@ import { APICheckEmail, APIGetToken } from "lib/api";
 // }
 
 export function useUserLogged() {
-  const [value, setValue] = useRecoilState(userLogged);
+  const value = useRecoilValue(userLogged);
   return value.logged;
 }
 

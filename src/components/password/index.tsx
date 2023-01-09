@@ -5,14 +5,22 @@ import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import { useGetUserToken } from "hooks";
 import { useLoader } from "hooks/uiHooks";
+import { useGoTo } from "hooks/uiHooks";
 
 const PasswordFormComp = () => {
+  let seterLoaderState = useLoader();
+  let goTo = useGoTo();
+  let userToken;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await useGetUserToken({
+    seterLoaderState({ mostrado: true });
+    userToken = await useGetUserToken({
       email: "jueves@gmail.com",
       password: e.target.password.value,
     });
+    seterLoaderState({ mostrado: false });
+    userToken ? goTo("/") : alert("contraseña incorrecta");
   };
 
   return (
@@ -20,7 +28,7 @@ const PasswordFormComp = () => {
       <form className={css.form} onSubmit={handleSubmit}>
         <label>
           <CustomText variant="">Ingresa tu contraseña</CustomText>
-          <TextField name="password"></TextField>
+          <TextField type="password" name="password"></TextField>
           <MainButton>Ingresar</MainButton>
         </label>
       </form>

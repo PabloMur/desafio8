@@ -20,3 +20,10 @@ export const loaderAtom = atom({
     mostrado: false,
   },
 });
+
+export const routeAtom = atom({
+  key: "selectedRoute",
+  default: {
+    route: "/",
+  },
+});

@@ -2,9 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { Home } from "pages/Home";
 import { UserDataPage } from "pages/UserData";
-import { Search } from "pages/Search";
 import { Layout } from "components/layout/Layout";
-import { SearchResults } from "pages/SearchResults";
 import { MapboxPage } from "pages/Mapbox";
 import { ReportPage } from "pages/Report";
 import { PetAroundPage } from "pages/PetsAround";
@@ -27,7 +25,6 @@ function AppRoutes() {
         <Route path="login" element={<LoginPage />}></Route>
         <Route path="signup" element={<SignupPage />}></Route>
         <Route path="password" element={<PasswordPage />}></Route>
-        <Route path="search/:query" element={<SearchResults />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
     </Routes>
@@ -35,3 +32,5 @@ function AppRoutes() {
 }
 
 export { AppRoutes };
+
+//<Route path="search/:query" element={<SearchResults />}></Route>

@@ -1,9 +1,8 @@
-// import React from "react";
-// import { PetsAround } from "components/pets-around";
-// import { MapboxPetsAround } from "components/mapbox";
+import React from "react";
+import { MapboxPetsAround } from "components/mapbox";
 
-// const PetAroundPage = () => {
-//   return <MapboxPetsAround></MapboxPetsAround>;
-// };
+const PetAroundPage = () => {
+  return <MapboxPetsAround variant="finder"></MapboxPetsAround>;
+};
 
-// export { PetAroundPage };
+export { PetAroundPage };

@@ -1,14 +1,12 @@
 import { desplegarMenuAtom, loaderAtom, routeAtom } from "atoms/uiAtoms";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
-export function desplegarMenu() {
-  //aca tengo que hacer una funcion que interprete el estado y en base a eso lo cambie co
-  // un click...
-}
+export function desplegarMenu() {}
 
 export function useRoute() {
-  const [routeValue, setRouteValue] = useRecoilState(routeAtom);
+  const setRouteValue = useSetRecoilState(routeAtom);
+  localStorage.setItem("route", "test");
   return setRouteValue;
 }
 
@@ -18,6 +16,7 @@ export const useGoTo = () => {
 };
 
 export const useLoader = () => {
-  const [value, setValue] = useRecoilState(loaderAtom);
+  const setValue = useSetRecoilState(loaderAtom);
+  localStorage.setItem("loader", "test");
   return setValue;
 };

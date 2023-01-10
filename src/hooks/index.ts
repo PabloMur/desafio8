@@ -29,6 +29,15 @@ export function useUserLogged() {
   return value.logged;
 }
 
+export function useSetUserLogged() {
+  const setUserLogged = useSetRecoilState(userLogged);
+  return setUserLogged;
+}
+
+export function useUserLogout() {
+  return localStorage.clear();
+}
+
 export function useUserPosition() {
   try {
     const options = {

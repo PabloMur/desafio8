@@ -6,10 +6,12 @@ import { CustomText } from "ui/custom-text";
 import { useGetUserToken } from "hooks";
 import { useLoader } from "hooks/uiHooks";
 import { useGoTo } from "hooks/uiHooks";
+import { useSetUserLogged } from "hooks";
 
 const PasswordFormComp = () => {
   let seterLoaderState = useLoader();
   let goTo = useGoTo();
+  let setLogedin = useSetUserLogged();
   let userToken;
 
   const handleSubmit = async (e) => {
@@ -20,6 +22,7 @@ const PasswordFormComp = () => {
       password: e.target.password.value,
     });
     seterLoaderState({ mostrado: false });
+    setLogedin({ logged: true });
     userToken ? goTo("/") : alert("contraseña incorrecta");
   };
 

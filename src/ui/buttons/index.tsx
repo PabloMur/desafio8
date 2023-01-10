@@ -51,6 +51,16 @@ export const LoginButton = ({ children, route }) => {
   );
 };
 
+export const LogoutButton = ({ children }) => {
+  return (
+    <Link className={css.linkLogin} to="/">
+      <button className={css.login}>
+        <CustomText variant="p">Logout</CustomText>
+      </button>
+    </Link>
+  );
+};
+
 export const SignupButton = ({ children, route }) => {
   return (
     <button className={css.signup}>

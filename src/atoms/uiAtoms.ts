@@ -1,4 +1,7 @@
 import { atom } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
 
 export const popupPermissionCardState = atom({
   key: "popupPermissionCard", // unique ID (with respect to other atoms/selectors)
@@ -23,7 +26,6 @@ export const loaderAtom = atom({
 
 export const routeAtom = atom({
   key: "selectedRoute",
-  default: {
-    route: "/",
-  },
+  default: "/",
+  effects_UNSTABLE: [persistAtom],
 });

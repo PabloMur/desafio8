@@ -10,3 +10,14 @@ export function TextField({ name, type }) {
   }
   return type === "text" ? <NormalTextField /> : <PasswordTextField />;
 }
+
+export function NameTextField({ name, placeholder }) {
+  return (
+    <input
+      name={name}
+      className={css.root}
+      type="text"
+      placeholder={placeholder}
+    ></input>
+  );
+}

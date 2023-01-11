@@ -1,3 +1,21 @@
+type pet = {
+  fullname: string;
+  zone: string;
+  lat: number;
+  lng: number;
+  status: string;
+  image: string;
+  token: string;
+};
+
+type msg = {
+  to: any;
+  from: string;
+  subject: string;
+  text: string;
+  html: string;
+};
+
 // chekear el mail -> https://desafio7.onrender.com/auth/email-check
 
 export const APICheckEmail = async (email) => {
@@ -37,7 +55,6 @@ export const APIGetToken = async (params: {
       body: JSON.stringify({ email, password }),
     });
     const response = await fetching.json();
-    console.log(response);
     return response;
   } catch (error) {
     console.error(error);
@@ -72,15 +89,7 @@ export const APICreateUser = async (params: {
 
 //crear user -> https://desafio7.onrender.com/pet
 
-export const APICreatePet = async (params: {
-  fullname: string;
-  zone: string;
-  lat: number;
-  lng: number;
-  status: string;
-  image: string;
-  token: string;
-}) => {
+export const APICreatePet = async (params: pet) => {
   try {
     const { fullname, zone, lat, lng, status, image, token } = params;
 
@@ -102,3 +111,21 @@ export const APICreatePet = async (params: {
 };
 
 // me quede en crear report send mail
+export const APISendInfoToPetOwner = async (mensaje: msg) => {
+  try {
+    const emailFetch = await fetch("https://desafio7.onrender.com/send-email", {
+      method: "POST",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        msg: mensaje,
+      }),
+    });
+    const response = await emailFetch.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};

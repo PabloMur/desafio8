@@ -3,7 +3,7 @@ import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
-import { useCheckUserEmail } from "hooks";
+import { useCheckUserEmail, useSetUserEmail } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { useLoader } from "hooks/uiHooks";
 import { useRecoilState } from "recoil";
@@ -12,11 +12,14 @@ import { loaderAtom } from "atoms/uiAtoms";
 const LoginForm = () => {
   const goTo = useNavigate();
   const seterLoaderState = useLoader();
+  const setUserEmail = useSetUserEmail();
 
   const checkEmailFromField = async (e) => {
     e.preventDefault();
+    const inputValue = e.target.email.value;
     seterLoaderState({ mostrado: true });
-    const check = await useCheckUserEmail(e.target.email.value);
+    const check = await useCheckUserEmail(inputValue);
+    setUserEmail(inputValue);
     seterLoaderState({ mostrado: false });
     check ? goTo("/password") : goTo("/signup");
   };

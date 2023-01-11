@@ -3,7 +3,7 @@ import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
-import { useGetUserToken } from "hooks";
+import { useGetUserToken, useSetUserToken, useUserEmail } from "hooks";
 import { useLoader } from "hooks/uiHooks";
 import { useGoTo } from "hooks/uiHooks";
 import { useSetUserLogged } from "hooks";
@@ -12,18 +12,29 @@ const PasswordFormComp = () => {
   let seterLoaderState = useLoader();
   let goTo = useGoTo();
   let setLogedin = useSetUserLogged();
+  let userEmail = useUserEmail();
+  let setUserToken = useSetUserToken();
+
+  let logerActive = { mostrado: true };
+  let logerDeactive = { mostrado: false };
   let userToken;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    seterLoaderState({ mostrado: true });
+    seterLoaderState(logerActive);
     userToken = await useGetUserToken({
-      email: "jueves@gmail.com",
+      email: userEmail,
       password: e.target.password.value,
     });
-    seterLoaderState({ mostrado: false });
-    setLogedin({ logged: true });
-    userToken ? goTo("/") : alert("contraseña incorrecta");
+
+    if (userToken) {
+      seterLoaderState(logerDeactive);
+      setLogedin({ logged: true });
+      setUserToken(userToken.token);
+      goTo("/");
+    } else {
+      alert("Contraseña Incorrecta");
+    }
   };
 
   return (

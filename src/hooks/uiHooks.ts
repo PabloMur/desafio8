@@ -2,11 +2,13 @@ import { desplegarMenuAtom, loaderAtom, routeAtom } from "atoms/uiAtoms";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useSetRecoilState } from "recoil";
 
-export function desplegarMenu() {}
+export function desplegarMenu() {
+  const menuDesplegableSetter = useSetRecoilState(desplegarMenuAtom);
+  return menuDesplegableSetter;
+}
 
-export function useRoute() {
+export function useSetRoute() {
   const setRouteValue = useSetRecoilState(routeAtom);
-  localStorage.setItem("route", "test");
   return setRouteValue;
 }
 

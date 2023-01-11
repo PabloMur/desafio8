@@ -1,25 +1,8 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import {
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
-
-import { userLogged } from "atoms/userAtoms";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { userEmail, userLogged, userName, userToken } from "atoms/userAtoms";
 import { APICheckEmail, APIGetToken } from "lib/api";
 
-export const useInit = () => {
-  const localData = localStorage.getItem("saved-state");
-  useSetState(JSON.parse(localData as any));
-};
-
-export const useSetState = (newState: any) => {
-  localStorage.setItem("saved-state", JSON.stringify(newState));
-};
-
+//Login, Logged y Logout
 export function useUserLogged() {
   const value = useRecoilValue(userLogged);
   return value.logged;
@@ -34,6 +17,29 @@ export function useUserLogout() {
   return localStorage.clear();
 }
 
+//setter y getter de Email
+export function useUserEmail() {
+  const value = useRecoilValue(userEmail);
+  return value;
+}
+
+export function useSetUserEmail() {
+  const setter = useSetRecoilState(userEmail);
+  return setter;
+}
+
+//setter y getter de Name
+export function useUserName() {
+  const username = useRecoilValue(userName);
+  return username;
+}
+
+export function useSetUserName() {
+  const userNameSetter = useSetRecoilState(userName);
+  return userNameSetter;
+}
+
+//User position
 export function useUserPosition() {
   try {
     const options = {
@@ -62,6 +68,12 @@ export const useCheckUserEmail = (email: string) => {
   return APICheckEmail(email);
 };
 
+//setter y getter de token
 export const useGetUserToken = (params) => {
   return APIGetToken(params);
 };
+
+export function useSetUserToken() {
+  const tokenSetter = useSetRecoilState(userToken);
+  return tokenSetter;
+}

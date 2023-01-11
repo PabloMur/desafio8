@@ -30,6 +30,19 @@
   align-items: center;
   justify-content: center;
 }
+.logout {
+  /*background-color: var(--middle-purple);*/
+  background-color: var(--yellow-bg-color);
+  color: var(--dark-purple);
+  padding: 2px 17px;
+  border: none;
+  border-radius: 10px;
+  height: 6vh;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .signup {
   background-color: var(--dark-purple);
@@ -54,6 +67,7 @@
   color: black;
   font-weight: 700;
   animation: fadein 0.8s ease;
+  cursor: pointer;
 }
 
 .MainButton {

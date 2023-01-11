@@ -1,9 +1,19 @@
+import { useSetUserLogged, useUserLogout } from "hooks";
 import React from "react";
-import { LoginButton, MenuButton, SignupButton } from "ui/buttons";
-import { Link } from "react-router-dom";
+import {
+  LoginButton,
+  LogoutButton,
+  MenuButton,
+  SignupButton,
+} from "ui/buttons";
 import css from "./styles.css";
 
 const Menu = () => {
+  const setLogedOut = useSetUserLogged();
+  const logOut = () => {
+    useUserLogout();
+    setLogedOut({ logged: false });
+  };
   return (
     <nav>
       <ul className={css.root}>
@@ -12,6 +22,7 @@ const Menu = () => {
         <MenuButton route="/my-reports">My Reports</MenuButton>
         <LoginButton route="/login">Login</LoginButton>
         <SignupButton route="/signup">Signup</SignupButton>
+        <LogoutButton onClick={logOut} />
       </ul>
     </nav>
   );

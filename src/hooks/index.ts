@@ -11,18 +11,14 @@ import {
 import { userLogged } from "atoms/userAtoms";
 import { APICheckEmail, APIGetToken } from "lib/api";
 
-// export function useSearchResults() {
-//   const params = useParams();
-//   const setQueryValue = useSetRecoilState(queryState);
-//   const query = params.query;
-//   const results = useRecoilValue(resultsState);
+export const useInit = () => {
+  const localData = localStorage.getItem("saved-state");
+  useSetState(JSON.parse(localData as any));
+};
 
-//   useEffect(() => {
-//     if (query) setQueryValue(query);
-//   }, [query]);
-
-//   return results;
-// }
+export const useSetState = (newState: any) => {
+  localStorage.setItem("saved-state", JSON.stringify(newState));
+};
 
 export function useUserLogged() {
   const value = useRecoilValue(userLogged);

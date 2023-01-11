@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./index.css";
-import { Link, redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
 import { useUserLogged } from "hooks";
 import { useRecoilValue, useSetRecoilState } from "recoil";
@@ -42,32 +42,47 @@ export const ReportButton = ({ onClick, variant }) => {
 };
 
 export const LoginButton = ({ children, route }) => {
+  const userLogged = useUserLogged();
   return (
-    <Link className={css.linkLogin} to={route}>
-      <button className={css.login}>
-        <CustomText variant="p">{children}</CustomText>
-      </button>
-    </Link>
+    <>
+      {userLogged === false && (
+        <Link className={css.linkLogin} to={route}>
+          <button className={css.login}>
+            <CustomText variant="p">{children}</CustomText>
+          </button>
+        </Link>
+      )}
+    </>
   );
 };
 
-export const LogoutButton = ({ children }) => {
+export const LogoutButton = ({ onClick }) => {
+  const userLogged = useUserLogged();
   return (
-    <Link className={css.linkLogin} to="/">
-      <button className={css.login}>
-        <CustomText variant="p">Logout</CustomText>
-      </button>
-    </Link>
+    <>
+      {userLogged && (
+        <Link className={css.linkLogin} to="/">
+          <button className={css.logout} onClick={onClick}>
+            <CustomText variant="p">Logout</CustomText>
+          </button>
+        </Link>
+      )}
+    </>
   );
 };
 
 export const SignupButton = ({ children, route }) => {
+  const userLogged = useUserLogged();
   return (
-    <button className={css.signup}>
-      <Link className={css.link} to={route}>
-        <CustomText variant="p">{children}</CustomText>
-      </Link>
-    </button>
+    <>
+      {userLogged === false && (
+        <button className={css.signup}>
+          <Link className={css.link} to={route}>
+            <CustomText variant="p">{children}</CustomText>
+          </Link>
+        </button>
+      )}
+    </>
   );
 };
 

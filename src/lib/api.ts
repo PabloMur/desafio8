@@ -1,3 +1,5 @@
+import { useUserToken } from "hooks";
+
 type pet = {
   fullname: string;
   zone: string;
@@ -61,6 +63,24 @@ export const APIGetToken = async (params: {
   }
 };
 
+//obtener el ME del user
+export const APIGetMe = async () => {
+  try {
+    const userToken = useUserToken();
+    const fetching = await fetch("https://desafio7.onrender.com/auth/me", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${userToken}`,
+      },
+    });
+    const response = await fetching.json();
+    console.log(response);
+    return response;
+  } catch (error) {}
+};
+
 //crear user -> https://desafio7.onrender.com/auth
 
 export const APICreateUser = async (params: {
@@ -101,6 +121,26 @@ export const APICreatePet = async (params: pet) => {
         Authorization: `bearer ${token}`,
       },
       body: JSON.stringify({ fullname, zone, lat, lng, status, image }),
+    });
+    const response = await fetching.json();
+    console.log(response);
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const APIUpdatePetData = async (dataForUpdate) => {
+  try {
+    const userToken = useUserToken();
+    const fetching = await fetch("https://desafio7.onrender.com/me/pets/20", {
+      method: "PUT",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${userToken}`,
+      },
+      body: JSON.stringify(dataForUpdate),
     });
     const response = await fetching.json();
     console.log(response);

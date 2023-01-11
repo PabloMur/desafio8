@@ -1,6 +1,6 @@
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { userEmail, userLogged, userName, userToken } from "atoms/userAtoms";
-import { APICheckEmail, APIGetToken } from "lib/api";
+import { APICheckEmail, APIGetMe, APIGetToken } from "lib/api";
 
 //Login, Logged y Logout
 export function useUserLogged() {
@@ -73,7 +73,17 @@ export const useGetUserToken = (params) => {
   return APIGetToken(params);
 };
 
+export const useUserToken = () => {
+  const token = useRecoilValue(userToken);
+  return token;
+};
+
 export function useSetUserToken() {
   const tokenSetter = useSetRecoilState(userToken);
   return tokenSetter;
+}
+
+//getter de ME
+export function useUserME() {
+  return APIGetMe();
 }

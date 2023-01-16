@@ -14,7 +14,6 @@ const PasswordFormComp = () => {
   let setLogedin = useSetUserLogged();
   let userEmail = useUserEmail();
   let setUserToken = useSetUserToken();
-
   let logerActive = { mostrado: true };
   let logerDeactive = { mostrado: false };
   let userToken;

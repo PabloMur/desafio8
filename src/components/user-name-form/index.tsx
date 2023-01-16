@@ -1,22 +1,20 @@
 import React, { useEffect } from "react";
-import { NameTextField, TextField } from "ui/text-field";
-import { CustomButton, MainButton } from "ui/buttons";
+import { NameTextField } from "ui/text-field";
+import { MainButton } from "ui/buttons";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
-import { useUserME, useUserName } from "hooks";
+import { useGetMeName, useUserName, useSetUpdateName } from "hooks";
+import { APIUpdateMeName } from "lib/api";
 
 const UserNameForm = () => {
   let userName = useUserName();
-  let userInfo = useUserME();
+  let updateNameSetter = useSetUpdateName();
 
-  useEffect(() => {
-    console.log(userInfo);
-  }, []);
-
-  function handleSubmit(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
-  }
+    updateNameSetter(e.target.username.value);
+  };
+
   return (
     <form className={css.root} onSubmit={handleSubmit}>
       <CustomText variant="p">Nombre</CustomText>

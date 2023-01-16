@@ -1,4 +1,6 @@
-import { useUserToken } from "hooks";
+import { updateName, userName } from "atoms/userAtoms";
+import { useSetUpdateName, useUserToken } from "hooks";
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 
 type pet = {
   fullname: string;
@@ -64,8 +66,9 @@ export const APIGetToken = async (params: {
 };
 
 //obtener el ME del user
-export const APIGetMe = async () => {
+export const APIGetMeName = async () => {
   try {
+    const nameSetterState = useSetRecoilState(userName);
     const userToken = useUserToken();
     const fetching = await fetch("https://desafio7.onrender.com/auth/me", {
       method: "GET",
@@ -76,9 +79,33 @@ export const APIGetMe = async () => {
       },
     });
     const response = await fetching.json();
-    console.log(response);
-    return response;
-  } catch (error) {}
+    console.log("traje el nombre");
+    nameSetterState(response.fullname);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const APIUpdateMeName = async () => {
+  try {
+    const userToken = useUserToken();
+    const [fullname, setter] = useRecoilState(updateName);
+    if (fullname !== "") {
+      await fetch("https://desafio7.onrender.com/auth/me", {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${userToken}`,
+        },
+        body: JSON.stringify({ fullname }),
+      });
+      setter("");
+      console.log("updated");
+    }
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 //crear user -> https://desafio7.onrender.com/auth

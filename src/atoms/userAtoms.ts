@@ -23,6 +23,11 @@ export const userName = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const updateName = atom({
+  key: "updateName",
+  default: "",
+});
+
 export const userToken = atom({
   key: "userToken",
   default: "token",
@@ -51,13 +56,13 @@ export const userPets = atom({
 });
 
 export const userReport = atom({
-  key: "userPets",
+  key: "userReport",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
 
 export const userEdit = atom({
-  key: "userPets",
+  key: "userEdit",
   default: [],
   effects_UNSTABLE: [persistAtom],
 });

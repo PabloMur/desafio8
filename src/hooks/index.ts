@@ -1,6 +1,18 @@
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { userEmail, userLogged, userName, userToken } from "atoms/userAtoms";
-import { APICheckEmail, APIGetMe, APIGetToken } from "lib/api";
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import {
+  updateName,
+  userEmail,
+  userLogged,
+  userName,
+  userToken,
+} from "atoms/userAtoms";
+import {
+  APICheckEmail,
+  APIGetMeName,
+  APIGetToken,
+  APIUpdateMeName,
+} from "lib/api";
+import { useEffect } from "react";
 
 //Login, Logged y Logout
 export function useUserLogged() {
@@ -28,15 +40,26 @@ export function useSetUserEmail() {
   return setter;
 }
 
+export const useCheckUserEmail = (email: string) => {
+  return APICheckEmail(email);
+};
+
 //setter y getter de Name
+export function useGetMeName() {
+  return APIGetMeName();
+}
+
 export function useUserName() {
   const username = useRecoilValue(userName);
   return username;
 }
 
 export function useSetUserName() {
-  const userNameSetter = useSetRecoilState(userName);
-  return userNameSetter;
+  return useSetRecoilState(userName);
+}
+
+export function useSetUpdateName() {
+  return useSetRecoilState(updateName);
 }
 
 //User position
@@ -63,11 +86,6 @@ export function useUserPosition() {
   }
 }
 
-export const useCheckUserEmail = (email: string) => {
-  localStorage.setItem("test", "test");
-  return APICheckEmail(email);
-};
-
 //setter y getter de token
 export const useGetUserToken = (params) => {
   return APIGetToken(params);
@@ -84,6 +102,3 @@ export function useSetUserToken() {
 }
 
 //getter de ME
-export function useUserME() {
-  return APIGetMe();
-}

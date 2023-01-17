@@ -66,10 +66,10 @@ export const APIGetToken = async (params: {
 };
 
 //obtener el ME del user
-export const APIGetMeName = async () => {
+export const APIGetMeName = async (token) => {
   try {
-    const nameSetterState = useSetRecoilState(userName);
-    const userToken = useUserToken();
+    //const nameSetterState = useSetRecoilState(userName);
+    const userToken = token;
     const fetching = await fetch("https://desafio7.onrender.com/auth/me", {
       method: "GET",
       mode: "cors",
@@ -80,28 +80,59 @@ export const APIGetMeName = async () => {
     });
     const response = await fetching.json();
     console.log("traje el nombre");
-    nameSetterState(response.fullname);
+    //nameSetterState(response.fullname);
+    return response;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const APIUpdateMeName = async () => {
+export const APIUpdateMeName = async (params: { token; fullname }) => {
   try {
-    const userToken = useUserToken();
-    const [fullname, setter] = useRecoilState(updateName);
+    const { fullname, token } = params;
+
     if (fullname !== "") {
-      await fetch("https://desafio7.onrender.com/auth/me", {
+      const fetching = await fetch("https://desafio7.onrender.com/auth/me", {
         method: "PUT",
         mode: "cors",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `bearer ${userToken}`,
+          Authorization: `bearer ${token}`,
         },
         body: JSON.stringify({ fullname }),
       });
-      setter("");
-      console.log("updated");
+      console.log("Se actualizo el nombre");
+      const response = await fetching.json();
+      return response;
+    } else {
+      alert("El Nombre esta vacío");
+      return;
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const APIUpdatePassword = async (params: { password; token }) => {
+  //auth/password
+  try {
+    const { password, token } = params;
+
+    if (password !== "") {
+      const fetching = await fetch(
+        "https://desafio7.onrender.com/auth/password",
+        {
+          method: "PUT",
+          mode: "cors",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `bearer ${token}`,
+          },
+          body: JSON.stringify({ password }),
+        }
+      );
+      const response = await fetching.json();
+      return response;
     }
   } catch (error) {
     console.error(error);
@@ -135,6 +166,25 @@ export const APICreateUser = async (params: {
 };
 
 //crear user -> https://desafio7.onrender.com/pet
+
+export const APIGetMePets = async (token) => {
+  try {
+    const userToken = token;
+    const fetching = await fetch("https://desafio7.onrender.com/me/pets", {
+      method: "GET",
+      mode: "cors",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${userToken}`,
+      },
+    });
+    const response = await fetching.json();
+    console.log("traje las mascotas de este usuario");
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const APICreatePet = async (params: pet) => {
   try {

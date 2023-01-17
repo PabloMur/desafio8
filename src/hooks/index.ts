@@ -9,10 +9,13 @@ import {
 import {
   APICheckEmail,
   APIGetMeName,
+  APIGetMePets,
   APIGetToken,
   APIUpdateMeName,
+  APIUpdatePassword,
 } from "lib/api";
 import { useEffect } from "react";
+import { useLoader } from "./uiHooks";
 
 //Login, Logged y Logout
 export function useUserLogged() {
@@ -46,7 +49,19 @@ export const useCheckUserEmail = (email: string) => {
 
 //setter y getter de Name
 export function useGetMeName() {
-  return APIGetMeName();
+  const setterLoader = useLoader();
+  const nameSetterState = useSetRecoilState(userName);
+
+  async function userNameFromApi(token: any) {
+    setterLoader({ mostrado: true });
+    const trajoElNombre = await APIGetMeName(token);
+    if (trajoElNombre) {
+      nameSetterState(trajoElNombre.fullname);
+      setterLoader({ mostrado: false });
+    }
+  }
+
+  return userNameFromApi;
 }
 
 export function useUserName() {
@@ -60,6 +75,35 @@ export function useSetUserName() {
 
 export function useSetUpdateName() {
   return useSetRecoilState(updateName);
+}
+
+export function useUpdateNameFunction() {
+  let updateNameSetter = useSetUpdateName();
+  const setterLoader = useLoader();
+  const token = useUserToken();
+
+  const updateName = async (e) => {
+    const fullname = e.target.username.value;
+    setterLoader({ mostrado: true });
+    updateNameSetter(fullname);
+    const updated = await APIUpdateMeName({ fullname, token });
+    if (updated) setterLoader({ mostrado: false });
+  };
+
+  return updateName;
+}
+
+export function useUpdatePasswordFunction() {
+  const setterLoader = useLoader();
+  const token = useUserToken();
+
+  const updatePassword = async (password) => {
+    setterLoader({ mostrado: true });
+    const updated = await APIUpdatePassword({ password, token });
+    if (updated) setterLoader({ mostrado: false });
+  };
+
+  return updatePassword;
 }
 
 //User position
@@ -102,3 +146,13 @@ export function useSetUserToken() {
 }
 
 //getter de ME
+export function useGetMePets() {
+  const token = useUserToken();
+
+  const getMePets = async () => {
+    const pets = await APIGetMePets(token);
+    console.log(pets);
+  };
+
+  return getMePets;
+}

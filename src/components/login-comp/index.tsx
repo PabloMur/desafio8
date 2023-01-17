@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { MainButton } from "ui/buttons";
@@ -6,8 +6,6 @@ import { CustomText } from "ui/custom-text";
 import { useCheckUserEmail, useSetUserEmail } from "hooks";
 import { useNavigate } from "react-router-dom";
 import { useLoader } from "hooks/uiHooks";
-import { useRecoilState } from "recoil";
-import { loaderAtom } from "atoms/uiAtoms";
 
 const LoginForm = () => {
   const goTo = useNavigate();

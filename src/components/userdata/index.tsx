@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./styles.css";
 import { UserNameForm } from "components/user-name-form";
 import { UserPasswordForm } from "components/user-password-form";
 import { CustomText } from "ui/custom-text";
-import { useGetMeName } from "hooks";
-import { APIUpdateMeName } from "lib/api";
+import { useGetMeName, useUserToken } from "hooks";
 
 const UserData = () => {
-  useGetMeName();
-  APIUpdateMeName();
+  let getName = useGetMeName();
+  let token = useUserToken();
+
+  useEffect(() => {
+    getName(token);
+  }, []);
+
   return (
     <div className={css.root}>
       <CustomText variant="title">Mis Datos</CustomText>

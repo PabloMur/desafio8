@@ -3,11 +3,22 @@ import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { CustomText } from "ui/custom-text";
 import { CustomButton, MainButton } from "ui/buttons";
+import { useUpdatePasswordFunction } from "hooks";
 
 const UserPasswordForm = () => {
+  const updatePassword = useUpdatePasswordFunction();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const passUno = e.target.contUno.value;
+    const passDos = e.target.contDos.value;
+    if (passUno == passDos) updatePassword(passUno);
+    else alert("las contraseñas deben ser iguales");
+  };
+
   return (
     <div>
-      <form className={css.root}>
+      <form className={css.root} onSubmit={handleSubmit}>
         <label htmlFor="">
           <CustomText variant="p">Nueva Contraseña</CustomText>
           <TextField type="password" name="contUno"></TextField>

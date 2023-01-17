@@ -1,18 +1,17 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NameTextField } from "ui/text-field";
 import { MainButton } from "ui/buttons";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
-import { useGetMeName, useUserName, useSetUpdateName } from "hooks";
-import { APIUpdateMeName } from "lib/api";
+import { useUserName, useUpdateNameFunction } from "hooks";
 
 const UserNameForm = () => {
   let userName = useUserName();
-  let updateNameSetter = useSetUpdateName();
+  let updateName = useUpdateNameFunction();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    updateNameSetter(e.target.username.value);
+    updateName(e);
   };
 
   return (

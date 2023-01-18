@@ -147,11 +147,20 @@ export function useSetUserToken() {
 
 //getter de ME
 export function useGetMePets() {
+  const setterLoader = useLoader();
   const token = useUserToken();
 
   const getMePets = async () => {
+    setterLoader({ mostrado: true });
     const pets = await APIGetMePets(token);
     console.log(pets);
+    console.log(typeof pets.pets);
+    console.log(typeof pets);
+    for (const key in pets.pets) {
+      const element = pets.pets[key];
+      console.log(element);
+    }
+    if (pets) setterLoader({ mostrado: false });
   };
 
   return getMePets;

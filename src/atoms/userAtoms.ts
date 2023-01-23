@@ -51,7 +51,7 @@ export const userLocation = atom({
 
 export const userPets = atom({
   key: "userPets",
-  default: [],
+  default: {},
   effects_UNSTABLE: [persistAtom],
 });
 

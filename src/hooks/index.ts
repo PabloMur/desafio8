@@ -4,6 +4,7 @@ import {
   userEmail,
   userLogged,
   userName,
+  userPets,
   userToken,
 } from "atoms/userAtoms";
 import {
@@ -149,19 +150,24 @@ export function useSetUserToken() {
 export function useGetMePets() {
   const setterLoader = useLoader();
   const token = useUserToken();
+  const setterPets = useSetUserPets();
 
   const getMePets = async () => {
     setterLoader({ mostrado: true });
     const pets = await APIGetMePets(token);
-    console.log(pets);
-    console.log(typeof pets.pets);
-    console.log(typeof pets);
-    for (const key in pets.pets) {
-      const element = pets.pets[key];
-      console.log(element);
+    if (pets) {
+      setterPets(pets);
+      setterLoader({ mostrado: false });
     }
-    if (pets) setterLoader({ mostrado: false });
   };
 
   return getMePets;
+}
+
+export function useSetUserPets() {
+  return useSetRecoilState(userPets);
+}
+
+export function useUserPets() {
+  return useRecoilValue(userPets);
 }

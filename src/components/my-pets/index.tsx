@@ -1,32 +1,46 @@
 import React, { useEffect } from "react";
 import css from "./styles.css";
-import { PetCardComp } from "components/pet-card";
 import { CustomText } from "ui/custom-text";
-import { useGetMePets } from "hooks";
+import { useGetMePets, useUserPets } from "hooks";
+import { MyPetCardComp } from "components/myPetCardComp";
 
 const MyPetsContainer = () => {
   const traerMascotas = useGetMePets();
-  const mascotas = [1, 2, 3];
-  let segundoTest = [];
+  const pets = useUserPets();
+
+  async function getAndRender() {
+    await traerMascotas();
+  }
+
+  function PetList() {
+    const petsList = pets.pets;
+    return (
+      petsList && (
+        <ul>
+          {petsList.map((pet) => (
+            <li key={pet.fullname} className={css.li}>
+              <MyPetCardComp
+                nombre={pet.fullname}
+                zona={pet.zone}
+                image={pet.image}
+              ></MyPetCardComp>
+            </li>
+          ))}
+        </ul>
+      )
+    );
+  }
 
   useEffect(() => {
-    traerMascotas();
+    getAndRender();
   }, []);
-
-  const test = () => {
-    segundoTest = mascotas.map((m: any) => (
-      <li key={m}>
-        <PetCardComp></PetCardComp>
-      </li>
-    ));
-  };
-
-  test();
 
   return (
     <div className={css.root}>
       <CustomText variant="title">Mis Mascotas</CustomText>
-      <div className={css.petsContainer}>{segundoTest}</div>
+      <div className={css.petsContainer}>
+        <PetList />
+      </div>
     </div>
   );
 };

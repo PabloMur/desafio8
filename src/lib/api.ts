@@ -36,6 +36,7 @@ export const APICheckEmail = async (email) => {
       }
     );
     const response = await fetching.json();
+    console.log(response, "response del mail");
     return response;
   } catch (error) {
     console.error(error);
@@ -59,6 +60,8 @@ export const APIGetToken = async (params: {
       body: JSON.stringify({ email, password }),
     });
     const response = await fetching.json();
+    console.log(response);
+    if (response.error) console.log("error");
     return response;
   } catch (error) {
     console.error(error);

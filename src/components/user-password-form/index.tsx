@@ -2,7 +2,7 @@ import React from "react";
 import css from "./styles.css";
 import { TextField } from "ui/text-field";
 import { CustomText } from "ui/custom-text";
-import { CustomButton, MainButton } from "ui/buttons";
+import { MainButton } from "ui/buttons";
 import { useUpdatePasswordFunction } from "hooks";
 
 const UserPasswordForm = () => {

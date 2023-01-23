@@ -3,7 +3,7 @@ import { CustomButton, MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
-const PetCardComp = ({ nombre, zona, image }) => {
+export const MyPetCardComp = ({ nombre, zona, image }) => {
   return (
     <div className={css.root}>
       <div className={css.imageContainer}>
@@ -15,13 +15,22 @@ const PetCardComp = ({ nombre, zona, image }) => {
           <CustomText variant="p">Zona: {zona}</CustomText>
         </div>
         <div>
-          <a href="a">
-            <MainButton>Reportar avistamiento</MainButton>
-          </a>
+          <CustomButton
+            onClick={() => {
+              console.log("algo");
+            }}
+          >
+            Editar Mascota
+          </CustomButton>
+          <CustomButton
+            onClick={() => {
+              console.log("algo");
+            }}
+          >
+            Reportar como encontrada
+          </CustomButton>
         </div>
       </div>
     </div>
   );
 };
-
-export { PetCardComp };

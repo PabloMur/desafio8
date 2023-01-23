@@ -12,9 +12,7 @@ export const popupPermissionCardState = atom({
 
 export const desplegarMenuAtom = atom({
   key: "desplegarMenu", // unique ID (with respect to other atoms/selectors)
-  default: {
-    mostrado: false,
-  },
+  default: false,
 });
 
 export const loaderAtom = atom({

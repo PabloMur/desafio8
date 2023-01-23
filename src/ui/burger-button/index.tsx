@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import css from "./index.css";
 import { Line, LeftLine, RightLine } from "ui/line";
+import { useRecoilState } from "recoil";
+import { desplegarMenuAtom } from "atoms/uiAtoms";
 
 const Cross = () => {
   return (
@@ -31,9 +33,11 @@ export const CustomButton = ({ handleclick, children }) => {
 
 const BurgerButton = () => {
   const [clicked, setClicked] = useState(false);
+  const [value, setter] = useRecoilState(desplegarMenuAtom);
 
   function handleClick() {
     setClicked(!clicked);
+    value ? setter(false) : setter(true);
   }
 
   return (

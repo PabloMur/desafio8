@@ -26,13 +26,17 @@ const PasswordFormComp = () => {
       password: e.target.password.value,
     });
 
-    if (userToken) {
+    if (userToken.error) {
+      alert("Contraseña incorrecta, vuelve a intentarlo");
+      seterLoaderState(logerDeactive);
+      goTo("/password");
+    }
+
+    if (userToken && !userToken.error) {
       seterLoaderState(logerDeactive);
       setLogedin({ logged: true });
       setUserToken(userToken.token);
       goTo("/");
-    } else {
-      alert("Contraseña Incorrecta");
     }
   };
 

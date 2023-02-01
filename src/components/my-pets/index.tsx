@@ -16,13 +16,15 @@ const MyPetsContainer = () => {
     const petsList = pets.pets;
     return (
       petsList && (
-        <ul>
+        <ul className={css.ul}>
           {petsList.map((pet) => (
             <li key={pet.fullname} className={css.li}>
               <MyPetCardComp
                 nombre={pet.fullname}
                 zona={pet.zone}
                 image={pet.image}
+                status={pet.state}
+                id={pet.id}
               ></MyPetCardComp>
             </li>
           ))}

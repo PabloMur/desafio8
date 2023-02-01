@@ -9,13 +9,13 @@ import {
 } from "atoms/userAtoms";
 import {
   APICheckEmail,
+  APICreateUser,
   APIGetMeName,
   APIGetMePets,
   APIGetToken,
   APIUpdateMeName,
   APIUpdatePassword,
 } from "lib/api";
-import { useEffect } from "react";
 import { useLoader } from "./uiHooks";
 
 //Login, Logged y Logout
@@ -46,6 +46,19 @@ export function useSetUserEmail() {
 
 export const useCheckUserEmail = (email: string) => {
   return APICheckEmail(email);
+};
+
+//create an user
+export const useCreateUser = () => {
+  const loader = useLoader();
+  const createUser = async (params) => {
+    loader({ mostrado: true });
+    const user = await APICreateUser(params);
+    console.log(user);
+    loader({ mostrado: false });
+    return user;
+  };
+  return createUser;
 };
 
 //setter y getter de Name

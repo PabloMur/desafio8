@@ -1,7 +1,12 @@
 import React from "react";
+import { PetEditor } from "components/pet-editor/index";
 
 const EditPetPage = () => {
-  return <div>Pagina de edicion de mascota</div>;
+  return (
+    <>
+      <PetEditor></PetEditor>
+    </>
+  );
 };
 
 export { EditPetPage };

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
@@ -11,8 +11,6 @@ const Banner = () => {
 
   const dataFromHook = useUserLogged();
   const position = useUserPosition();
-
-  useEffect(() => {}, []);
 
   const MostrarPopup = () => {
     setValue({ mostrado: true });

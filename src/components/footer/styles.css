@@ -22,10 +22,39 @@
 .learn {
   color: white;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
 }
 
+.apximg {
+  height: 42px;
+  width: 80px;
+  background-image: url("../../assets/apx.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.githubimg {
+  height: 50px;
+  width: 50px;
+  background-image: url("../../assets/github.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.linkedinimg {
+  height: 50px;
+  width: 50px;
+  background-image: url("../../assets/linkedin.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 ul {
   display: flex;
+  list-style: none;
 }

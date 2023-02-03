@@ -1,5 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import { createMap, initGeocoder, initGeolocate } from "lib/mapbox";
+import {
+  createMap,
+  getAndSetPetsinToMap,
+  initGeocoder,
+  initGeolocate,
+} from "lib/mapbox";
 import mapboxgl from "mapbox-gl";
 import css from "./styles.css";
 import { userLocation } from "atoms/userAtoms";
@@ -13,6 +18,29 @@ const MapboxPetsAround = ({ variant }) => {
     let map = await createMap(myRef.current, value.lat, value.lng);
     let geolocate = await initGeolocate();
     let geocoder = await initGeocoder();
+
+    geocoder.on("result", async () => {
+      try {
+        console.log("estas buscando algo pablito");
+        console.log(geocoder);
+        const provider = await geocoder.mapMarker._lngLat;
+        await getAndSetPetsinToMap(map, provider);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    geolocate.on("geolocate", async () => {
+      try {
+        const { latitude, longitude } = await geolocate._lastKnownPosition
+          .coords;
+        const provider = { lat: latitude, lng: longitude };
+        await getAndSetPetsinToMap(map, provider);
+        console.log(provider);
+      } catch (error) {
+        console.error(error);
+      }
+    });
 
     map.addControl(geocoder);
     map.addControl(geolocate);

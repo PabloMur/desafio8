@@ -1,5 +1,8 @@
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import { APIgetPetsAround } from "./api";
+import { PetCardComp } from "components/pet-card";
+import React from "react";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";
@@ -7,12 +10,11 @@ mapboxgl.accessToken =
 export const createMap = async (mapContainer: any, lat, lng) => {
   try {
     const map = new mapboxgl.Map({
-      container: mapContainer, // container ID
-      style: "mapbox://styles/polmur/cl8w32dh4001514oxqd9l8aop", // style URL
-      //center: [-57.560829, -37.995224], // starting position [lng, lat]
-      center: [lng, lat], // starting position [lng, lat]
-      zoom: 12, // starting zoom
-      projection: "globe" as any, // display the map as a 3D globe
+      container: mapContainer,
+      style: "mapbox://styles/polmur/cl8w32dh4001514oxqd9l8aop",
+      center: [lng, lat],
+      zoom: 12,
+      projection: "globe" as any,
     });
     return map;
   } catch (error) {
@@ -50,14 +52,17 @@ export const putMarkers = async (map: any, pets: any) => {
     for (const petItem in pets.response) {
       const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
       const { lat, lng } = pets.response[petItem]._geoloc;
-      console.log(pets.response[petItem]);
+      let comp = (
+        <PetCardComp nombre={fullname} zona={zone} image={image}></PetCardComp>
+      );
+
       new mapboxgl.Marker({
         color: "#FF0000",
       })
         .setLngLat([lng, lat])
         .setPopup(
           new mapboxgl.Popup({ offset: 10 }).setHTML(
-            `<custom-pet-card owner-email="${ownerEmail}" pet-id="${id}" profile-image="${image}" pet-name="${fullname}" pet-zone="${zone}"></custom-pet-card>`
+            "<PetCardComp nombre='pepe' image='unaimagen' zona='Mar del plata'></PetCardComp>"
           )
         )
         .addTo(map);
@@ -67,10 +72,10 @@ export const putMarkers = async (map: any, pets: any) => {
   }
 };
 
-export const getAndSetPetsinToMap = async (map: any, pets: any, prov: any) => {
+export const getAndSetPetsinToMap = async (map: any, prov: any) => {
   try {
     const { lat, lng } = prov;
-    //pets = await state.getPetsAround(lat, lng);
+    const pets = await APIgetPetsAround(lat, lng);
     await putMarkers(map, pets);
   } catch (error) {
     console.error(error);

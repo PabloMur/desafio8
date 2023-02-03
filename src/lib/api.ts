@@ -170,6 +170,23 @@ export const APICreateUser = async (params: {
 
 //crear user -> https://desafio7.onrender.com/pet
 
+//Cons esta llamada voy a traer las mascotas que estan cerca
+export const APIgetPetsAround = async (lat, lng) => {
+  try {
+    //https://desafio7.onrender.compets-around?lat=-37.999689&lng=-57.548645
+    const fetching = await fetch(
+      `https://desafio7.onrender.com/pets-around?lat=${lat}&lng=${lng}`
+    );
+    const response = await fetching.json();
+    console.log("traje las mascotas cerca de este punto");
+    console.log(response);
+
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const APIGetMePets = async (token) => {
   try {
     const userToken = token;

@@ -2,6 +2,7 @@ import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 import {
   updateName,
   userEmail,
+  userLocation,
   userLogged,
   userName,
   userPets,
@@ -12,6 +13,7 @@ import {
   APICreateUser,
   APIGetMeName,
   APIGetMePets,
+  APIgetPetsAround,
   APIGetToken,
   APIUpdateMeName,
   APIUpdatePassword,
@@ -183,4 +185,12 @@ export function useSetUserPets() {
 
 export function useUserPets() {
   return useRecoilValue(userPets);
+}
+
+export async function useGetPetsAround(lat, lng) {
+  const mostrar = async () => {
+    const mascotas = await APIgetPetsAround(lat, lng);
+    return mascotas;
+  };
+  return mostrar;
 }

@@ -52,9 +52,6 @@ export const putMarkers = async (map: any, pets: any) => {
     for (const petItem in pets.response) {
       const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
       const { lat, lng } = pets.response[petItem]._geoloc;
-      let comp = (
-        <PetCardComp nombre={fullname} zona={zone} image={image}></PetCardComp>
-      );
 
       new mapboxgl.Marker({
         color: "#FF0000",
@@ -62,7 +59,7 @@ export const putMarkers = async (map: any, pets: any) => {
         .setLngLat([lng, lat])
         .setPopup(
           new mapboxgl.Popup({ offset: 10 }).setHTML(
-            "<PetCardComp nombre='pepe' image='unaimagen' zona='Mar del plata'></PetCardComp>"
+            `<div>${fullname}${zone} <img src="${image}"/></div>`
           )
         )
         .addTo(map);

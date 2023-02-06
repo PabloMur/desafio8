@@ -2,13 +2,14 @@ import React from "react";
 import { CustomText } from "ui/custom-text";
 import { useGoTo } from "hooks/uiHooks";
 import css from "./styles.css";
+import { useDeletePet } from "hooks";
 
 export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
   const goTo = useGoTo();
+  const eliminarMascota = useDeletePet();
 
-  function mostrarID() {
-    console.log("aca esta pasando algo", id);
-    goTo("/edit-pet");
+  function eliminar() {
+    eliminarMascota(id);
   }
 
   return (
@@ -26,12 +27,12 @@ export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
           <button
             className={css.editButton}
             onClick={() => {
-              console.log("algo");
+              goTo("/edit-pet");
             }}
           >
             <p className={css.buttonText}>Editar Mascota</p>
           </button>
-          <button className={css.deletePet} onClick={mostrarID}>
+          <button className={css.deletePet} onClick={eliminar}>
             <p className={css.buttonText}>Reportar como encontrada</p>
           </button>
         </div>

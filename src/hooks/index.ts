@@ -11,6 +11,7 @@ import {
 import {
   APICheckEmail,
   APICreateUser,
+  APIDeletePet,
   APIGetMeName,
   APIGetMePets,
   APIgetPetsAround,
@@ -185,6 +186,20 @@ export function useSetUserPets() {
 
 export function useUserPets() {
   return useRecoilValue(userPets);
+}
+
+export function useDeletePet() {
+  const setterLoader = useLoader();
+  const userToken = useUserToken();
+  const deletePet = async (id) => {
+    setterLoader({ mostrado: true });
+    const mascotaEliminada = await APIDeletePet(id, userToken);
+    if (mascotaEliminada) {
+      await setterLoader({ mostrado: false });
+      location.reload();
+    }
+  };
+  return deletePet;
 }
 
 export async function useGetPetsAround(lat, lng) {

@@ -247,6 +247,26 @@ export const APIUpdatePetData = async (dataForUpdate) => {
   }
 };
 
+export const APIDeletePet = async (id, token) => {
+  try {
+    const fetching = await fetch(
+      `https://desafio7.onrender.com/me/pets/${id}`,
+      {
+        method: "DELETE",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+      }
+    );
+    const response = await fetching.json();
+    return response;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 // me quede en crear report send mail
 export const APISendInfoToPetOwner = async (mensaje: msg) => {
   try {

@@ -1,5 +1,7 @@
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 import {
+  editPetAtom,
+  reportPetName,
   updateName,
   userEmail,
   userLocation,
@@ -200,6 +202,20 @@ export function useDeletePet() {
     }
   };
   return deletePet;
+}
+
+export function useEditPet() {
+  const [value, setValue] = useRecoilState(editPetAtom);
+  const token = useUserToken();
+  async function mostrarDataParaEditar() {
+    console.log(value);
+  }
+  return mostrarDataParaEditar;
+}
+
+export function useSetReportPetName() {
+  const setter = useSetRecoilState(reportPetName);
+  return setter;
 }
 
 export async function useGetPetsAround(lat, lng) {

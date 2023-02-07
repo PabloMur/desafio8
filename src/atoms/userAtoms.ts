@@ -66,3 +66,13 @@ export const userEdit = atom({
   default: [],
   effects_UNSTABLE: [persistAtom],
 });
+
+export const reportPetName = atom({
+  key: "userReportPetName",
+  default: "",
+});
+
+export const editPetAtom = atom({
+  key: "editPetData",
+  default: {},
+});

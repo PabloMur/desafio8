@@ -6,7 +6,8 @@ const DropzoneComp = () => {
   const dropzoneRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    initDropzone(dropzoneRef.current);
+    const myDropzone = initDropzone(dropzoneRef.current);
+    myDropzone.on("thumbnail", (file) => console.log(file.dataURL));
   }, []);
 
   return (

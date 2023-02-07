@@ -227,18 +227,20 @@ export const APICreatePet = async (params: pet) => {
   }
 };
 
-export const APIUpdatePetData = async (dataForUpdate) => {
+export const APIUpdatePetData = async (dataForUpdate, token, petId) => {
   try {
-    const userToken = useUserToken();
-    const fetching = await fetch("https://desafio7.onrender.com/me/pets/20", {
-      method: "PUT",
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `bearer ${userToken}`,
-      },
-      body: JSON.stringify(dataForUpdate),
-    });
+    const fetching = await fetch(
+      `https://desafio7.onrender.com/me/pets/${petId}`,
+      {
+        method: "PUT",
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `bearer ${token}`,
+        },
+        body: JSON.stringify(dataForUpdate),
+      }
+    );
     const response = await fetching.json();
     console.log(response);
     return response;

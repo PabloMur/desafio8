@@ -1,16 +1,29 @@
 import React from "react";
 import css from "./styles.css";
-import { TextField } from "ui/text-field";
+import { ReportNameField, TextField } from "ui/text-field";
 import { CustomButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import { MapboxPetsAround } from "components/mapbox";
 import { ReportButton } from "ui/buttons";
 import { DropzoneComp } from "components/dropzone";
+import { reportPetName } from "atoms/userAtoms";
+import { useRecoilValue } from "recoil";
+import { useGetterImageDataURL } from "hooks";
 
 const ReportMaker = () => {
+  const petname = useRecoilValue(reportPetName);
+  const imageDataUrl = useGetterImageDataURL();
+  const mascota = {
+    fullname: petname,
+    zone: "Mar del Plata",
+    lat: -38.003014,
+    lng: -57.552858,
+    state: "perdido",
+    image: imageDataUrl,
+  };
   function onSubmit(e) {
     e.preventDefault();
-    console.log("hola desde el form");
+    console.log(mascota);
   }
 
   function Mostrar() {
@@ -23,7 +36,7 @@ const ReportMaker = () => {
       <form className={css.form} onSubmit={onSubmit}>
         <label className={css.label}>
           <CustomText variant="p">El nombre de tu mascota</CustomText>
-          <TextField type="text" name="petname"></TextField>
+          <ReportNameField></ReportNameField>
         </label>
         <label className={css.label}>
           <CustomText variant="p">Imagen de tu mascota</CustomText>

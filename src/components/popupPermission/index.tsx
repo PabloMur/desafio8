@@ -2,20 +2,22 @@ import React, { useEffect } from "react";
 import { CustomButton, MainButton } from "ui/buttons";
 import css from "./styles.css";
 import { popupPermissionCardState } from "atoms/uiAtoms";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { EquisComp } from "ui/equis";
 import { Link } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
+import { useUserPosition } from "hooks";
 
 const NonComp = () => {
   return <div className={css.none}></div>;
 };
 
 const PopupCartel = () => {
-  const [value, setValue] = useRecoilState(popupPermissionCardState);
-
+  const setPopupAtom = useSetRecoilState(popupPermissionCardState);
+  const position = useUserPosition();
   function cerrarPopUp() {
-    setValue({ mostrado: false });
+    position();
+    setPopupAtom({ mostrado: false });
   }
 
   return (

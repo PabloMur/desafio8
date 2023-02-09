@@ -22,7 +22,7 @@ export const ReportButton = ({ onClick, variant }) => {
   const MakeReportButton = () => {
     return (
       <button onClick={onClick} className={css.makeReport}>
-        Reportar Mascota
+        <CustomText variant="p">Reportar Mascota</CustomText>
       </button>
     );
   };
@@ -33,7 +33,7 @@ export const ReportButton = ({ onClick, variant }) => {
     }
     return (
       <button className={css.cancelReport} onClick={reload}>
-        Cancelar Reporte
+        <CustomText variant="p">Cancelar Reporte</CustomText>
       </button>
     );
   };

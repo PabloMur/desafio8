@@ -3,15 +3,11 @@ import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
 import { popupPermissionCardState } from "atoms/uiAtoms";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { useUserLogged, useUserPosition } from "hooks";
 
 const Banner = () => {
-  const [value, setValue] = useRecoilState(popupPermissionCardState);
-
-  const dataFromHook = useUserLogged();
-  const position = useUserPosition();
-
+  const setValue = useSetRecoilState(popupPermissionCardState);
   const MostrarPopup = () => {
     setValue({ mostrado: true });
   };

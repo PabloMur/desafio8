@@ -1,6 +1,7 @@
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
 import {
   editPetAtom,
+  reportPetImageDataUrl,
   reportPetName,
   updateName,
   userEmail,
@@ -143,7 +144,10 @@ export function useUserPosition() {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    navigator.geolocation.getCurrentPosition(success, error, options);
+    function getUserPosition() {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    }
+    return getUserPosition;
   } catch (error) {
     console.error(error);
   }
@@ -216,6 +220,16 @@ export function useEditPet() {
 export function useSetReportPetName() {
   const setter = useSetRecoilState(reportPetName);
   return setter;
+}
+
+export function useSetImageDataUrl() {
+  const setter = useSetRecoilState(reportPetImageDataUrl);
+  return setter;
+}
+
+export function useGetterImageDataURL() {
+  const value = useRecoilValue(reportPetImageDataUrl);
+  return value;
 }
 
 export async function useGetPetsAround(lat, lng) {

@@ -72,6 +72,11 @@ export const reportPetName = atom({
   default: "",
 });
 
+export const reportPetImageDataUrl = atom({
+  key: "imageDataURL",
+  default: "",
+});
+
 export const editPetAtom = atom({
   key: "editPetData",
   default: {},

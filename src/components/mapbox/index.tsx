@@ -21,8 +21,6 @@ const MapboxPetsAround = ({ variant }) => {
 
     geocoder.on("result", async () => {
       try {
-        console.log("estas buscando algo pablito");
-        console.log(geocoder);
         const provider = await geocoder.mapMarker._lngLat;
         await getAndSetPetsinToMap(map, provider);
       } catch (error) {

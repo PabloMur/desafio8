@@ -5,6 +5,7 @@ import { AppRoutes } from "./router";
 import { RecoilRoot } from "recoil";
 import { Loader } from "ui/loader";
 import "../index.css";
+import "./components/petCardCustomEl/index";
 
 function App() {
   return (

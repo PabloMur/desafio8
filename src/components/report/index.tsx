@@ -8,22 +8,25 @@ import { ReportButton } from "ui/buttons";
 import { DropzoneComp } from "components/dropzone";
 import { reportPetName } from "atoms/userAtoms";
 import { useRecoilValue } from "recoil";
-import { useGetterImageDataURL } from "hooks";
+import { useGetterImageDataURL, useReportNewPet, useUserEmail } from "hooks";
 
 const ReportMaker = () => {
+  const createPetFunction = useReportNewPet();
+  const userEmail = useUserEmail();
   const petname = useRecoilValue(reportPetName);
   const imageDataUrl = useGetterImageDataURL();
-  const mascota = {
+  let mascota = {
     fullname: petname,
+    ownerEmail: userEmail,
     zone: "Mar del Plata",
-    lat: -38.003014,
-    lng: -57.552858,
+    lat: -38.00594,
+    lng: -57.545172,
     state: "perdido",
     image: imageDataUrl,
   };
   function onSubmit(e) {
     e.preventDefault();
-    console.log(mascota);
+    createPetFunction(mascota);
   }
 
   function Mostrar() {

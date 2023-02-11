@@ -13,6 +13,7 @@ import {
 } from "atoms/userAtoms";
 import {
   APICheckEmail,
+  APICreatePet,
   APICreateUser,
   APIDeletePet,
   APIGetMeName,
@@ -60,7 +61,6 @@ export const useCreateUser = () => {
   const createUser = async (params) => {
     loader({ mostrado: true });
     const user = await APICreateUser(params);
-    console.log(user);
     loader({ mostrado: false });
     return user;
   };
@@ -194,6 +194,21 @@ export function useUserPets() {
   return useRecoilValue(userPets);
 }
 
+export function useReportNewPet() {
+  const token = useUserToken();
+  const setterLoader = useLoader();
+
+  const createPet = async (params) => {
+    setterLoader({ mostrado: true });
+    const createdPet = await APICreatePet(params, token);
+    console.log(params, "desde el hook");
+
+    if (createdPet) setterLoader({ mostrado: false });
+  };
+
+  return createPet;
+}
+
 export function useDeletePet() {
   const setterLoader = useLoader();
   const userToken = useUserToken();
@@ -201,7 +216,7 @@ export function useDeletePet() {
     setterLoader({ mostrado: true });
     const mascotaEliminada = await APIDeletePet(id, userToken);
     if (mascotaEliminada) {
-      await setterLoader({ mostrado: false });
+      setterLoader({ mostrado: false });
       location.reload();
     }
   };

@@ -2,7 +2,7 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { APIgetPetsAround } from "./api";
 
-mapboxgl.accessToken = //process.env.MAPBOX_API_KEY;
+mapboxgl.accessToken =
   "pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";
 
 export const createMap = async (mapContainer: any, lat, lng) => {
@@ -57,7 +57,7 @@ export const putMarkers = async (map: any, pets: any) => {
         .setLngLat([lng, lat])
         .setPopup(
           new mapboxgl.Popup({ offset: 10 }).setHTML(
-            `<div>${fullname}${zone} <img src="${image}"/></div>`
+            `<custom-pet-card owner-email="${ownerEmail}" pet-id="${id}" profile-image="${image}" pet-name="${fullname}" pet-zone="${zone}"></custom-pet-card>`
           )
         )
         .addTo(map);
@@ -72,6 +72,23 @@ export const getAndSetPetsinToMap = async (map: any, prov: any) => {
     const { lat, lng } = prov;
     const pets = await APIgetPetsAround(lat, lng);
     await putMarkers(map, pets);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const petLocationCoordSetter = async (map: any, pets: any) => {
+  try {
+    for (const petItem in pets.response) {
+      const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
+      const { lat, lng } = pets.response[petItem]._geoloc;
+
+      new mapboxgl.Marker({
+        color: "#FF0000",
+      })
+        .setLngLat([lng, lat])
+        .addTo(map);
+    }
   } catch (error) {
     console.error(error);
   }

@@ -43,8 +43,8 @@ export const userId = atom({
 export const userLocation = atom({
   key: "useLocation",
   default: {
-    lat: -38.0106565,
-    lng: -57.5556473,
+    lat: 0,
+    lng: 0,
   },
   effects_UNSTABLE: [persistAtom],
 });

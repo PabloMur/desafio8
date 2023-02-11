@@ -150,18 +150,15 @@ export const APICreateUser = async (params: {
   password: string;
 }) => {
   try {
-    const { fullname, email, password } = params;
-
     const fetching = await fetch("https://desafio7.onrender.com/auth", {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ fullname, email, password }),
+      body: JSON.stringify(params),
     });
     const response = await fetching.json();
-    console.log(response);
     return response;
   } catch (error) {
     console.error(error);
@@ -173,7 +170,6 @@ export const APICreateUser = async (params: {
 //Cons esta llamada voy a traer las mascotas que estan cerca
 export const APIgetPetsAround = async (lat, lng) => {
   try {
-    //https://desafio7.onrender.compets-around?lat=-37.999689&lng=-57.548645
     const fetching = await fetch(
       `https://desafio7.onrender.com/pets-around?lat=${lat}&lng=${lng}`
     );
@@ -189,13 +185,12 @@ export const APIgetPetsAround = async (lat, lng) => {
 
 export const APIGetMePets = async (token) => {
   try {
-    const userToken = token;
     const fetching = await fetch("https://desafio7.onrender.com/me/pets", {
       method: "GET",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `bearer ${userToken}`,
+        Authorization: `bearer ${token}`,
       },
     });
     const response = await fetching.json();
@@ -206,21 +201,18 @@ export const APIGetMePets = async (token) => {
   }
 };
 
-export const APICreatePet = async (params: pet) => {
+export const APICreatePet = async (params: pet, token: any) => {
   try {
-    const { fullname, zone, lat, lng, status, image, token } = params;
-
-    const fetching = await fetch("https://desafio7.onrender.com/auth", {
+    const fetching = await fetch("https://desafio7.onrender.com/pet", {
       method: "POST",
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
         Authorization: `bearer ${token}`,
       },
-      body: JSON.stringify({ fullname, zone, lat, lng, status, image }),
+      body: JSON.stringify(params),
     });
     const response = await fetching.json();
-    console.log(response);
     return response;
   } catch (error) {
     console.error(error);

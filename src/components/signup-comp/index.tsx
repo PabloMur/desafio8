@@ -2,20 +2,29 @@ import React from "react";
 import css from "./styles.css";
 import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
-import { TextField } from "ui/text-field";
-import { useCreateUser } from "hooks";
+import { EmailField, TextField } from "ui/text-field";
+import { useCreateUser, useUserEmail } from "hooks";
 
 const SignupForm = () => {
-  const funcionCreadora = useCreateUser();
+  const createNewUser = useCreateUser();
+  const userEmail = useUserEmail();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form en funcionamiento");
-    funcionCreadora({
-      fullname: "zapatilla",
-      email: "zapatilla@gmail.com",
-      password: "123",
-    });
+
+    const passOne = e.target.contUno.value;
+    const passTwo = e.target.contDos.value;
+    const passEven = passOne === passTwo;
+
+    const newUser = {
+      fullname: "User",
+      email: userEmail,
+      password: passOne,
+    };
+
+    if (passEven) {
+      createNewUser(newUser);
+    } else alert("Las contrasenias deben ser iguales");
   };
 
   return (
@@ -23,7 +32,7 @@ const SignupForm = () => {
       <form className={css.form} onSubmit={handleSubmit}>
         <label>
           <CustomText variant="p">Email</CustomText>
-          <TextField type="text" name="email"></TextField>
+          <EmailField></EmailField>
         </label>
         <label>
           <CustomText variant="p">Contraseña</CustomText>

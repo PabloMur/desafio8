@@ -1,4 +1,9 @@
-import { useSetReportPetName } from "hooks";
+import {
+  useSetReportPetName,
+  useSetUpdateName,
+  useSetUserEmail,
+  useUserEmail,
+} from "hooks";
 import React from "react";
 import css from "./index.css";
 
@@ -34,6 +39,25 @@ export function ReportNameField() {
     <input
       className={css.root}
       type="reportname"
+      onChange={handleChange}
+    ></input>
+  );
+}
+
+export function EmailField() {
+  const userEmailAtom = useUserEmail();
+  const emailSetter = useSetUserEmail();
+  function handleChange(e) {
+    e.preventDefault();
+    const userEmail = e.target.value;
+    emailSetter(userEmail);
+  }
+
+  return (
+    <input
+      className={css.root}
+      type="email"
+      placeholder={userEmailAtom}
       onChange={handleChange}
     ></input>
   );

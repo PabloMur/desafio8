@@ -33,3 +33,7 @@ body {
 .mapboxgl-ctrl-bottom-right {
   display: none;
 }
+
+.mapboxgl-popup-content {
+  background-color: #ffffff00;
+}

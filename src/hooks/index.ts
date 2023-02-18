@@ -129,6 +129,7 @@ export function useUpdatePasswordFunction() {
 //User position
 export function useUserPosition() {
   try {
+    const userCordsSetter = useSetRecoilState(userLocation);
     const options = {
       enableHighAccuracy: true,
       timeout: 5000,
@@ -137,7 +138,9 @@ export function useUserPosition() {
 
     function success(pos) {
       const crd = pos.coords;
-      console.log(crd);
+      const cords = { lat: crd.latitude, lng: crd.longitude };
+      console.log(crd.latitude, crd.longitude);
+      userCordsSetter(cords);
     }
 
     function error(err) {

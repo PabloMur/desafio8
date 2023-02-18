@@ -56,26 +56,3 @@ const MapboxPetsAround = ({ variant }) => {
 };
 
 export { MapboxPetsAround };
-
-//componente creado con react
-
-// import React, { useState } from 'react';
-
-// function Menu() {
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   return (
-//     <div>
-//       <button onClick={() => setIsOpen(!isOpen)}>
-//         Abrir menú
-//       </button>
-//       {isOpen && (
-//         <ul>
-//           <li>Opción 1</li>
-//           <li>Opción 2</li>
-//           <li>Opción 3</li>
-//         </ul>
-//       )}
-//     </div>
-//   );
-// }

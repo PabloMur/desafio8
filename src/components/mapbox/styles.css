@@ -22,3 +22,7 @@
     opacity: 1;
   }
 }
+
+.mapboxgl-popup-content {
+  background-color: #ffffff00 !important;
+}

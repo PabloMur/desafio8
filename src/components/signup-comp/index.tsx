@@ -3,11 +3,34 @@ import css from "./styles.css";
 import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import { EmailField, TextField } from "ui/text-field";
-import { useCreateUser, useUserEmail } from "hooks";
+import {
+  useCreateUser,
+  useGetUserToken,
+  useSetUserLogged,
+  useSetUserToken,
+  useUserEmail,
+} from "hooks";
+import { useGoTo } from "hooks/uiHooks";
 
 const SignupForm = () => {
   const createNewUser = useCreateUser();
   const userEmail = useUserEmail();
+  const setLogedin = useSetUserLogged();
+  let setUserToken = useSetUserToken();
+  const goTo = useGoTo();
+
+  const onceUserCreated = async (newUser) => {
+    const userCreated = await createNewUser(newUser);
+    if (userCreated) {
+      let userToken = await useGetUserToken({
+        email: userEmail,
+        password: newUser.password,
+      });
+      await setUserToken(userToken.token);
+      await setLogedin({ logged: true });
+      goTo("/userdata");
+    }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +46,7 @@ const SignupForm = () => {
     };
 
     if (passEven) {
-      createNewUser(newUser);
+      onceUserCreated(newUser);
     } else alert("Las contrasenias deben ser iguales");
   };
 

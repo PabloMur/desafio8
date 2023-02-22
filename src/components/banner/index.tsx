@@ -3,8 +3,8 @@ import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { CustomButton } from "ui/buttons";
 import { popupPermissionCardState } from "atoms/uiAtoms";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { useUserLogged, useUserPosition } from "hooks";
+import { useSetRecoilState } from "recoil";
+
 
 const Banner = () => {
   const setValue = useSetRecoilState(popupPermissionCardState);

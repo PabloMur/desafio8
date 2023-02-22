@@ -23,7 +23,7 @@ import {
   APIUpdateMeName,
   APIUpdatePassword,
 } from "lib/api";
-import { useLoader } from "./uiHooks";
+import { useGoTo, useLoader } from "./uiHooks";
 
 //Login, Logged y Logout
 export function useUserLogged() {
@@ -126,13 +126,20 @@ export function useUpdatePasswordFunction() {
   return updatePassword;
 }
 
+//User Location
+export function useUserLocation(){
+  const currentUserLocation = useRecoilValue(userLocation)
+  return currentUserLocation
+}
+
 //User position
 export function useUserPosition() {
   try {
+    const goTo = useGoTo()
     const userCordsSetter = useSetRecoilState(userLocation);
     const options = {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: 50000,
       maximumAge: 0,
     };
 
@@ -141,6 +148,7 @@ export function useUserPosition() {
       const cords = { lat: crd.latitude, lng: crd.longitude };
       console.log(crd.latitude, crd.longitude);
       userCordsSetter(cords);
+      goTo("/mapbox")
     }
 
     function error(err) {

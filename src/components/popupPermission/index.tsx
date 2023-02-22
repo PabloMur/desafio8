@@ -4,9 +4,9 @@ import css from "./styles.css";
 import { popupPermissionCardState } from "atoms/uiAtoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { EquisComp } from "ui/equis";
-import { Link } from "react-router-dom";
 import { CustomText } from "ui/custom-text";
-import { useUserPosition } from "hooks";
+import { useUserPosition, useUserLocation } from "hooks";
+import { useGoTo } from "hooks/uiHooks";
 
 const NonComp = () => {
   return <div className={css.none}></div>;
@@ -15,9 +15,19 @@ const NonComp = () => {
 const PopupCartel = () => {
   const setPopupAtom = useSetRecoilState(popupPermissionCardState);
   const position = useUserPosition();
+  const userLocation = useUserLocation();
+  const goTo = useGoTo();
+
+  // useEffect(() => {
+  //   if (userLocation.lat !== 0 && userLocation.lng !== 0) goTo("/mapbox");
+  // }, []);
+
   function cerrarPopUp() {
     position();
     setPopupAtom({ mostrado: false });
+    console.log(userLocation);
+    if (userLocation.lat !== 0 && userLocation.lng !== 0)
+      console.log("location no es 0");
   }
 
   return (
@@ -33,11 +43,8 @@ const PopupCartel = () => {
               obtener tu ubicacion
             </CustomText>
           </div>
-          <Link to="mapbox">
-            <CustomButton onClick={cerrarPopUp}>
-              Aceptar y continuar
-            </CustomButton>
-          </Link>
+
+          <CustomButton onClick={cerrarPopUp}>Aceptar y continuar</CustomButton>
         </div>
       </div>
     </div>

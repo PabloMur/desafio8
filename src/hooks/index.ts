@@ -1,8 +1,9 @@
-import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil";
 import {
   editPetAtom,
   reportPetImageDataUrl,
   reportPetName,
+  reportPetZone,
   updateName,
   userEmail,
   userLocation,
@@ -256,6 +257,16 @@ export function useSetImageDataUrl() {
 export function useGetterImageDataURL() {
   const value = useRecoilValue(reportPetImageDataUrl);
   return value;
+}
+
+export function useSetPetZone(){
+  const petZoneSetter = useResetRecoilState(reportPetZone)
+  return petZoneSetter
+}
+
+export function useGetPetZone(){
+  const petZoneAtomCurrentValue = useRecoilValue(reportPetZone)
+  return petZoneAtomCurrentValue
 }
 
 export async function useGetPetsAround(lat, lng) {

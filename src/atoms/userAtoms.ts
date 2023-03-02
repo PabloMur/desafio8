@@ -77,6 +77,21 @@ export const reportPetImageDataUrl = atom({
   default: "",
 });
 
+export const reportPetZone = atom({
+  key:"petZone",
+  default:""
+})
+
+export const reportPetCordsLat = atom({
+  key:"petCordsLat",
+  default:0
+})
+
+export const reportPetCordsLng = atom({
+  key:"petCordsLng",
+  default: 0
+})
+
 export const editPetAtom = atom({
   key: "editPetData",
   default: {},

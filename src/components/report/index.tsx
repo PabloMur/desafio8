@@ -3,30 +3,44 @@ import css from "./styles.css";
 import { ReportNameField, TextField } from "ui/text-field";
 import { CustomButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
-import { MapboxPetsAround } from "components/mapbox";
+import { MapboxPetsAround, MapboxReport } from "components/mapbox";
 import { ReportButton } from "ui/buttons";
 import { DropzoneComp } from "components/dropzone";
-import { reportPetName } from "atoms/userAtoms";
+import {
+  reportPetCordsLat,
+  reportPetCordsLng,
+  reportPetName,
+} from "atoms/userAtoms";
 import { useRecoilValue } from "recoil";
-import { useGetterImageDataURL, useReportNewPet, useUserEmail } from "hooks";
+import {
+  useGetPetZone,
+  useGetterImageDataURL,
+  useReportNewPet,
+  useUserEmail,
+} from "hooks";
 
 const ReportMaker = () => {
   const createPetFunction = useReportNewPet();
   const userEmail = useUserEmail();
   const petname = useRecoilValue(reportPetName);
   const imageDataUrl = useGetterImageDataURL();
+  const petZone = useGetPetZone();
+  const petLat = useRecoilValue(reportPetCordsLat);
+  const petLng = useRecoilValue(reportPetCordsLng);
+
   let mascota = {
     fullname: petname,
     ownerEmail: userEmail,
-    zone: "Mar del Plata",
-    lat: -38.00594,
-    lng: -57.545172,
+    zone: petZone,
+    lat: petLat,
+    lng: petLng,
     state: "perdido",
     image: imageDataUrl,
   };
   function onSubmit(e) {
     e.preventDefault();
     createPetFunction(mascota);
+    console.log(mascota);
   }
 
   function Mostrar() {
@@ -48,7 +62,7 @@ const ReportMaker = () => {
         <label className={css.label}>
           <CustomText variant="p">Zona en la que se perdio</CustomText>
           <div>
-            <MapboxPetsAround variant="report" />
+            <MapboxReport></MapboxReport>
           </div>
         </label>
         <ReportButton variant="makeReport" onClick={Mostrar}></ReportButton>

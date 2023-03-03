@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import css from "./styles.css";
 import { CustomText } from "ui/custom-text";
 import { TextField } from "ui/text-field";
 import { DropzoneComp } from "components/dropzone";
 import { MapboxPetsAround } from "components/mapbox";
+import { useRecoilValue } from "recoil";
+import { editPetIdAtom } from "atoms/userAtoms";
 
 function PetEditor() {
+  const petId = useRecoilValue(editPetIdAtom);
   function handleSubmit(e) {
     e.preventDefault();
     console.log(e.target.petname.value);
@@ -14,6 +17,10 @@ function PetEditor() {
   function resetForm() {
     location.reload();
   }
+
+  useEffect(() => {
+    console.log(petId);
+  }, []);
 
   return (
     <div className={css.container}>

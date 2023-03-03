@@ -67,6 +67,11 @@ export const userEdit = atom({
   effects_UNSTABLE: [persistAtom],
 });
 
+export const petsAroundLength = atom({
+  key:"petAroundLength",
+  default:0
+})
+
 export const reportPetName = atom({
   key: "userReportPetName",
   default: "",
@@ -92,7 +97,7 @@ export const reportPetCordsLng = atom({
   default: 0
 })
 
-export const editPetAtom = atom({
-  key: "editPetData",
-  default: {},
+export const editPetIdAtom = atom({
+  key: "editPetIdAtom",
+  default: 0,
 });

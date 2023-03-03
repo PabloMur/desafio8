@@ -16,7 +16,9 @@ const PetCardComp = ({ nombre, zona, image }) => {
         </div>
         <div>
           <a href="a">
-            <MainButton>Reportar avistamiento</MainButton>
+            <link rel="stylesheet" href="test">
+              <MainButton>Reportar avistamiento</MainButton>
+            </link>
           </a>
         </div>
       </div>

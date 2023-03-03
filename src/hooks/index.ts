@@ -1,6 +1,7 @@
 import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil";
 import {
-  editPetAtom,
+  editPetIdAtom,
+  petsAroundLength,
   reportPetImageDataUrl,
   reportPetName,
   reportPetZone,
@@ -236,7 +237,7 @@ export function useDeletePet() {
 }
 
 export function useEditPet() {
-  const [value, setValue] = useRecoilState(editPetAtom);
+  const [value, setValue] = useRecoilState(editPetIdAtom);
   const token = useUserToken();
   async function mostrarDataParaEditar() {
     console.log(value);
@@ -271,7 +272,10 @@ export function useGetPetZone(){
 
 export async function useGetPetsAround(lat, lng) {
   const mostrar = async () => {
+    const setPetAroundLength = useSetRecoilState(petsAroundLength);
+
     const mascotas = await APIgetPetsAround(lat, lng);
+    setPetAroundLength(mascotas.length)
     return mascotas;
   };
   return mostrar;

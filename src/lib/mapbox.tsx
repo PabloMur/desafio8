@@ -1,6 +1,9 @@
+import React from "react";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { APIgetPetsAround } from "./api";
+import { petsAroundLength } from "atoms/userAtoms";
+import { useSetRecoilState } from "recoil";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";

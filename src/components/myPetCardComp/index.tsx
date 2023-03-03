@@ -3,10 +3,13 @@ import { CustomText } from "ui/custom-text";
 import { useGoTo } from "hooks/uiHooks";
 import css from "./styles.css";
 import { useDeletePet } from "hooks";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { editPetIdAtom } from "atoms/userAtoms";
 
 export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
   const goTo = useGoTo();
   const eliminarMascota = useDeletePet();
+  const editPetIdSetter = useSetRecoilState(editPetIdAtom);
 
   function eliminar() {
     eliminarMascota(id);
@@ -27,6 +30,7 @@ export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
           <button
             className={css.editButton}
             onClick={() => {
+              editPetIdSetter(id);
               goTo("/edit-pet");
             }}
           >

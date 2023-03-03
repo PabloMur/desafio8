@@ -15,7 +15,6 @@ import {
 } from "atoms/userAtoms";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { PetResults } from "components/petResults";
-import { useSetPetZone } from "hooks";
 
 const MapboxPetsAround = ({ variant }) => {
   let myRef = useRef<HTMLDivElement>(null);
@@ -41,7 +40,6 @@ const MapboxPetsAround = ({ variant }) => {
           .coords;
         const provider = { lat: latitude, lng: longitude };
         await getAndSetPetsinToMap(map, provider);
-        console.log(provider);
       } catch (error) {
         console.error(error);
       }
@@ -58,7 +56,6 @@ const MapboxPetsAround = ({ variant }) => {
   return variant == "finder" ? (
     <div className={css.container}>
       <div className={css.root} ref={myRef}></div>
-      <PetResults />
     </div>
   ) : (
     <div className={css.reportMap} ref={myRef}></div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { CustomButton, MainButton } from "ui/buttons";
+import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
@@ -17,7 +17,7 @@ const PetCardComp = ({ nombre, zona, image }) => {
         <div>
           <a href="a">
             <link rel="stylesheet" href="test">
-              <MainButton>Reportar avistamiento</MainButton>
+              <MainButton>ver en detalle</MainButton>
             </link>
           </a>
         </div>

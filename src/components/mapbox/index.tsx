@@ -13,7 +13,7 @@ import {
   reportPetZone,
   userLocation,
 } from "atoms/userAtoms";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { PetResults } from "components/petResults";
 
 const MapboxPetsAround = ({ variant }) => {
@@ -67,7 +67,7 @@ const MapboxReport = () => {
   const petZoneSetter = useSetRecoilState(reportPetZone);
   const petCordsLatSetter = useSetRecoilState(reportPetCordsLat);
   const petCordsLngSetter = useSetRecoilState(reportPetCordsLng);
-  const [value, setValue] = useRecoilState(userLocation);
+  const value = useRecoilValue(userLocation);
 
   const creteMapAndControls = async () => {
     let map = await createMap(myRef.current, value.lat, value.lng);
@@ -80,8 +80,6 @@ const MapboxReport = () => {
         petZoneSetter(petZone);
         petCordsLatSetter(petCords.lat);
         petCordsLngSetter(petCords.lng);
-        console.log("Estas son las coordenadas", petCords);
-        console.log("Este es el nombre de la zona completo", petZone);
       } catch (error) {
         console.error(error);
       }

@@ -8,6 +8,7 @@ import {
 import mapboxgl from "mapbox-gl";
 import css from "./styles.css";
 import {
+  petsAround,
   reportPetCordsLat,
   reportPetCordsLng,
   reportPetZone,
@@ -19,6 +20,7 @@ import { PetResults } from "components/petResults";
 const MapboxPetsAround = ({ variant }) => {
   let myRef = useRef<HTMLDivElement>(null);
   const [value, setValue] = useRecoilState(userLocation);
+  const petResultsSetter = useSetRecoilState(petsAround);
 
   const creteMapAndControls = async () => {
     let map = await createMap(myRef.current, value.lat, value.lng);
@@ -28,7 +30,8 @@ const MapboxPetsAround = ({ variant }) => {
     geocoder.on("result", async () => {
       try {
         const provider = await geocoder.mapMarker._lngLat;
-        await getAndSetPetsinToMap(map, provider);
+        const petsResults = await getAndSetPetsinToMap(map, provider);
+        petResultsSetter(petsResults.response);
       } catch (error) {
         console.error(error);
       }
@@ -39,7 +42,8 @@ const MapboxPetsAround = ({ variant }) => {
         const { latitude, longitude } = await geolocate._lastKnownPosition
           .coords;
         const provider = { lat: latitude, lng: longitude };
-        await getAndSetPetsinToMap(map, provider);
+        const petsResults = await getAndSetPetsinToMap(map, provider);
+        petResultsSetter(petsResults.response);
       } catch (error) {
         console.error(error);
       }
@@ -56,6 +60,7 @@ const MapboxPetsAround = ({ variant }) => {
   return variant == "finder" ? (
     <div className={css.container}>
       <div className={css.root} ref={myRef}></div>
+      <PetResults></PetResults>
     </div>
   ) : (
     <div className={css.reportMap} ref={myRef}></div>
@@ -84,18 +89,6 @@ const MapboxReport = () => {
         console.error(error);
       }
     });
-
-    // geolocate.on("geolocate", async () => {
-    //   try {
-    //     const { latitude, longitude } = await geolocate._lastKnownPosition
-    //       .coords;
-    //     const provider = { lat: latitude, lng: longitude };
-    //     console.log(provider);
-    //     console.log(geolocate);
-    //   } catch (error) {
-    //     console.error(error);
-    //   }
-    // });
 
     map.addControl(geocoder);
     map.addControl(new mapboxgl.NavigationControl());

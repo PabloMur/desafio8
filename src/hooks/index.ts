@@ -148,9 +148,8 @@ export function useUserPosition() {
     function success(pos) {
       const crd = pos.coords;
       const cords = { lat: crd.latitude, lng: crd.longitude };
-      console.log(crd.latitude, crd.longitude);
       userCordsSetter(cords);
-      goTo("/mapbox")
+      goTo("/mapbox") 
     }
 
     function error(err) {
@@ -198,6 +197,21 @@ export function useGetMePets() {
 
   return getMePets;
 }
+
+// export async function useGetPetsAround(lat, lng) {
+//   const setterLoader = useLoader();
+//   const setterPets = useSetUserPets();
+  
+//   const mostrar = async () => {
+//     setterLoader({ mostrado: true });
+//     const setPetAroundLength = useSetRecoilState(petsAroundLength);
+
+//     const mascotas = await APIgetPetsAround(lat, lng);
+//     setPetAroundLength(mascotas.length)
+//     return mascotas;
+//   };
+//   return mostrar;
+// }
 
 export function useSetUserPets() {
   return useSetRecoilState(userPets);
@@ -270,13 +284,4 @@ export function useGetPetZone(){
   return petZoneAtomCurrentValue
 }
 
-export async function useGetPetsAround(lat, lng) {
-  const mostrar = async () => {
-    const setPetAroundLength = useSetRecoilState(petsAroundLength);
 
-    const mascotas = await APIgetPetsAround(lat, lng);
-    setPetAroundLength(mascotas.length)
-    return mascotas;
-  };
-  return mostrar;
-}

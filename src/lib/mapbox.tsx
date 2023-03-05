@@ -51,32 +51,32 @@ export const initGeolocate = async () => {
 
 export const putMarkers = async (map: any, pets: any) => {
   try {
-    const Popup = (petName) => <div className="popup">{petName}</div>;
+    // const Popup = (petName) => <div className="popup">{petName}</div>;
 
-    const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
+    // const popUpRef = useRef(new mapboxgl.Popup({ offset: 15 }));
 
     for (const petItem in pets.response) {
       const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
       const { lat, lng } = pets.response[petItem]._geoloc;
 
-      // new mapboxgl.Marker({
-      //   color: "#FF0000",
-      // })
-      //   .setLngLat([lng, lat])
-      //   .setPopup(
-      //     new mapboxgl.Popup({ offset: 10 }).setHTML(
-      //       `<custom-pet-card owner-email="${ownerEmail}" pet-id="${id}" profile-image="${image}" pet-name="${fullname}" pet-zone="${zone}"></custom-pet-card>`
-      //     )
-      //   )
-      //   .addTo(map);
-
-      const popupNode = document.createElement("div");
-      ReactDOM.render(<Popup petName={fullname} />, popupNode);
-      popUpRef.current
+      new mapboxgl.Marker({
+        color: "#FF0000",
+      })
         .setLngLat([lng, lat])
-        .setDOMContent(popupNode)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 10 }).setHTML(
+            `<custom-pet-card owner-email="${ownerEmail}" pet-id="${id}" profile-image="${image}" pet-name="${fullname}" pet-zone="${zone}"></custom-pet-card>`
+          )
+        )
         .addTo(map);
-      return <></>;
+
+      // const popupNode = document.createElement("div");
+      // ReactDOM.render(<Popup petName={fullname} />, popupNode);
+      // popUpRef.current
+      //   .setLngLat([lng, lat])
+      //   .setDOMContent(popupNode)
+      //   .addTo(map);
+      // return <></>;
     }
   } catch (error) {
     console.error(error);
@@ -88,6 +88,7 @@ export const getAndSetPetsinToMap = async (map: any, prov: any) => {
     const { lat, lng } = prov;
     const pets = await APIgetPetsAround(lat, lng);
     await putMarkers(map, pets);
+    return pets;
   } catch (error) {
     console.error(error);
   }

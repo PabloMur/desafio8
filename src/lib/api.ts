@@ -174,9 +174,6 @@ export const APIgetPetsAround = async (lat, lng) => {
       `https://desafio7.onrender.com/pets-around?lat=${lat}&lng=${lng}`
     );
     const response = await fetching.json();
-    console.log("traje las mascotas cerca de este punto");
-    console.log(response);
-
     return response;
   } catch (error) {
     console.error(error);

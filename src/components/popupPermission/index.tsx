@@ -21,13 +21,14 @@ const PopupCartel = () => {
   // useEffect(() => {
   //   if (userLocation.lat !== 0 && userLocation.lng !== 0) goTo("/mapbox");
   // }, []);
-
   function cerrarPopUp() {
+    setPopupAtom({ mostrado: false });
+    if (userLocation.lat !== 0 && userLocation.lng !== 0) goTo("/mapbox");
+  }
+
+  function aceptarUsoDePosicion() {
     position();
     setPopupAtom({ mostrado: false });
-    console.log(userLocation);
-    if (userLocation.lat !== 0 && userLocation.lng !== 0)
-      console.log("location no es 0");
   }
 
   return (
@@ -44,7 +45,9 @@ const PopupCartel = () => {
             </CustomText>
           </div>
 
-          <CustomButton onClick={cerrarPopUp}>Aceptar y continuar</CustomButton>
+          <CustomButton onClick={aceptarUsoDePosicion}>
+            Aceptar y continuar
+          </CustomButton>
         </div>
       </div>
     </div>

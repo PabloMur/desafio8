@@ -72,6 +72,11 @@ export const petsAroundLength = atom({
   default:0
 })
 
+export const petsAround = atom({
+  key:"petAround",
+  default:[]
+})
+
 export const reportPetName = atom({
   key: "userReportPetName",
   default: "",

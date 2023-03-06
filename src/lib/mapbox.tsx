@@ -1,10 +1,6 @@
-import React, { useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import { APIgetPetsAround } from "./api";
-import { petsAroundLength } from "atoms/userAtoms";
-import { useSetRecoilState } from "recoil";
 
 mapboxgl.accessToken =
   "pk.eyJ1IjoicG9sbXVyIiwiYSI6ImNsYWc0ejh0eTFhYTEzcXBlNGh4N3p6eGgifQ.J7CA9nlTGPzjWhdDW1QFvA";
@@ -94,19 +90,19 @@ export const getAndSetPetsinToMap = async (map: any, prov: any) => {
   }
 };
 
-export const petLocationCoordSetter = async (map: any, pets: any) => {
-  try {
-    for (const petItem in pets.response) {
-      const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
-      const { lat, lng } = pets.response[petItem]._geoloc;
+// export const petLocationCoordSetter = async (map: any, pets: any) => {
+//   try {
+//     for (const petItem in pets.response) {
+//       const { image, fullname, zone, id, ownerEmail } = pets.response[petItem];
+//       const { lat, lng } = pets.response[petItem]._geoloc;
 
-      new mapboxgl.Marker({
-        color: "#FF0000",
-      })
-        .setLngLat([lng, lat])
-        .addTo(map);
-    }
-  } catch (error) {
-    console.error(error);
-  }
-};
+//       new mapboxgl.Marker({
+//         color: "#FF0000",
+//       })
+//         .setLngLat([lng, lat])
+//         .addTo(map);
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

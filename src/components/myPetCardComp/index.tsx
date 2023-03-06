@@ -3,16 +3,46 @@ import { CustomText } from "ui/custom-text";
 import { useGoTo } from "hooks/uiHooks";
 import css from "./styles.css";
 import { useDeletePet } from "hooks";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { editPetIdAtom } from "atoms/userAtoms";
+import { useSetRecoilState } from "recoil";
+import {
+  editPetIdAtom,
+  editPetImageAtom,
+  editPetLatitudeAtom,
+  editPetLongitudeAtom,
+  editPetNameAtom,
+  editPetZoneAtom,
+} from "atoms/userAtoms";
 
-export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
+export const MyPetCardComp = ({
+  nombre,
+  zona,
+  image,
+  status,
+  id,
+  lat,
+  lng,
+}) => {
   const goTo = useGoTo();
   const eliminarMascota = useDeletePet();
   const editPetIdSetter = useSetRecoilState(editPetIdAtom);
+  const editPetNameSetter = useSetRecoilState(editPetNameAtom);
+  const editPetImageSetter = useSetRecoilState(editPetImageAtom);
+  const editPetZoneSetter = useSetRecoilState(editPetZoneAtom);
+  const editPetLatitudeSetter = useSetRecoilState(editPetLatitudeAtom);
+  const editPetLongitudeSetter = useSetRecoilState(editPetLongitudeAtom);
 
   function eliminar() {
     eliminarMascota(id);
+  }
+
+  function editPet() {
+    editPetIdSetter(id);
+    editPetNameSetter(nombre);
+    editPetImageSetter(image);
+    editPetZoneSetter(zona);
+    editPetLatitudeSetter(lat);
+    editPetLongitudeSetter(lng);
+    goTo("/edit-pet");
   }
 
   return (
@@ -27,13 +57,7 @@ export const MyPetCardComp = ({ nombre, zona, image, status, id }) => {
           <CustomText variant="p">Actualmente: {status}</CustomText>
         </div>
         <div>
-          <button
-            className={css.editButton}
-            onClick={() => {
-              editPetIdSetter(id);
-              goTo("/edit-pet");
-            }}
-          >
+          <button className={css.editButton} onClick={editPet}>
             <p className={css.buttonText}>Editar Mascota</p>
           </button>
           <button className={css.deletePet} onClick={eliminar}>

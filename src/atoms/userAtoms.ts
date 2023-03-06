@@ -41,7 +41,7 @@ export const userId = atom({
 });
 
 export const userLocation = atom({
-  key: "useLocation",
+  key: "userLocation",
   default: {
     lat: 0,
     lng: 0,
@@ -106,3 +106,28 @@ export const editPetIdAtom = atom({
   key: "editPetIdAtom",
   default: 0,
 });
+
+export const editPetNameAtom = atom({
+  key:"editPetNameAtom",
+  default:""
+})
+
+export const editPetZoneAtom = atom({
+  key:"editPetZoneAtom",
+  default:""
+})
+
+export const editPetImageAtom = atom({
+  key:"editPetImageAtom",
+  default:""
+})
+
+export const editPetLatitudeAtom = atom({
+  key:"editPetLatitudeAtom",
+  default:0
+})
+
+export const editPetLongitudeAtom = atom({
+  key:"editPetLongitudeAtom",
+  default:0
+})

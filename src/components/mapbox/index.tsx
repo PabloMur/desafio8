@@ -8,6 +8,9 @@ import {
 import mapboxgl from "mapbox-gl";
 import css from "./styles.css";
 import {
+  editPetLatitudeAtom,
+  editPetLongitudeAtom,
+  editPetZoneAtom,
   petsAround,
   reportPetCordsLat,
   reportPetCordsLng,
@@ -99,4 +102,36 @@ const MapboxReport = () => {
   return <div ref={myRef} className={css.reportMap}></div>;
 };
 
-export { MapboxPetsAround, MapboxReport };
+const MapboxEdit = () => {
+  let myRef = useRef<HTMLDivElement>(null);
+  const petZoneSetter = useSetRecoilState(editPetZoneAtom);
+  const petCordsLatSetter = useSetRecoilState(editPetLatitudeAtom);
+  const petCordsLngSetter = useSetRecoilState(editPetLongitudeAtom);
+  const value = useRecoilValue(userLocation);
+
+  const creteMapAndControls = async () => {
+    let map = await createMap(myRef.current, value.lat, value.lng);
+    let geocoder = await initGeocoder();
+
+    geocoder.on("result", async () => {
+      try {
+        const petCords = await geocoder.mapMarker._lngLat;
+        const petZone = await JSON.parse(geocoder.lastSelected).place_name;
+        petZoneSetter(petZone);
+        petCordsLatSetter(petCords.lat);
+        petCordsLngSetter(petCords.lng);
+      } catch (error) {
+        console.error(error);
+      }
+    });
+
+    map.addControl(geocoder);
+    map.addControl(new mapboxgl.NavigationControl());
+  };
+  useEffect(() => {
+    creteMapAndControls();
+  }, []);
+  return <div ref={myRef} className={css.reportMap}></div>;
+};
+
+export { MapboxPetsAround, MapboxReport, MapboxEdit };

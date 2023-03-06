@@ -28,6 +28,7 @@ const PetsAround = () => {
                 zona={pet.zone}
                 image={pet.image}
                 id={pet.objectID}
+                ownerEmail={pet.ownerEmail}
               ></PetCardComp>
             </li>
           ))}

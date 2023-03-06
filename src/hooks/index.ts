@@ -24,6 +24,7 @@ import {
   APIGetToken,
   APIUpdateMeName,
   APIUpdatePassword,
+  APIUpdatePetData,
 } from "lib/api";
 import { useGoTo, useLoader } from "./uiHooks";
 
@@ -251,12 +252,18 @@ export function useDeletePet() {
 }
 
 export function useEditPet() {
-  const [value, setValue] = useRecoilState(editPetIdAtom);
+  const petId  = useRecoilValue(editPetIdAtom);
   const token = useUserToken();
-  async function mostrarDataParaEditar() {
-    console.log(value);
+  const setterLoader = useLoader();
+
+  async function editPet(data) {
+    setterLoader({ mostrado: true });
+    const edit = await APIUpdatePetData(data,token,petId )
+    if(edit){
+      setterLoader({ mostrado: false });
+    }
   }
-  return mostrarDataParaEditar;
+  return editPet;
 }
 
 export function useSetReportPetName() {

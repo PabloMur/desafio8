@@ -1,3 +1,4 @@
+import { editPetNameAtom } from "atoms/userAtoms";
 import {
   useSetReportPetName,
   useSetUpdateName,
@@ -5,6 +6,7 @@ import {
   useUserEmail,
 } from "hooks";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import css from "./index.css";
 
 export function TextField({ name, type }) {
@@ -31,6 +33,21 @@ export function NameTextField({ name, placeholder }) {
 
 export function ReportNameField() {
   const nameSetter = useSetReportPetName();
+  function handleChange(e) {
+    const petName = e.target.value;
+    nameSetter(petName);
+  }
+  return (
+    <input
+      className={css.root}
+      type="reportname"
+      onChange={handleChange}
+    ></input>
+  );
+}
+
+export function EditNameField() {
+  const nameSetter = useSetRecoilState(editPetNameAtom);
   function handleChange(e) {
     const petName = e.target.value;
     nameSetter(petName);

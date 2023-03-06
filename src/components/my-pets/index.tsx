@@ -25,6 +25,8 @@ const MyPetsContainer = () => {
                 image={pet.image}
                 status={pet.state}
                 id={pet.id}
+                lat={pet.lat}
+                lng={pet.lng}
               ></MyPetCardComp>
             </li>
           ))}
@@ -34,6 +36,7 @@ const MyPetsContainer = () => {
   }
 
   useEffect(() => {
+    console.log(pets);
     getAndRender();
   }, []);
 

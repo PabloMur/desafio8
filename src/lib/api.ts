@@ -36,7 +36,6 @@ export const APICheckEmail = async (email) => {
       }
     );
     const response = await fetching.json();
-    console.log(response, "response del mail");
     return response;
   } catch (error) {
     console.error(error);
@@ -60,7 +59,6 @@ export const APIGetToken = async (params: {
       body: JSON.stringify({ email, password }),
     });
     const response = await fetching.json();
-    console.log(response);
     if (response.error) console.log("error");
     return response;
   } catch (error) {
@@ -71,7 +69,6 @@ export const APIGetToken = async (params: {
 //obtener el ME del user
 export const APIGetMeName = async (token) => {
   try {
-    //const nameSetterState = useSetRecoilState(userName);
     const userToken = token;
     const fetching = await fetch("https://desafio7.onrender.com/auth/me", {
       method: "GET",
@@ -82,8 +79,6 @@ export const APIGetMeName = async (token) => {
       },
     });
     const response = await fetching.json();
-    console.log("traje el nombre");
-    //nameSetterState(response.fullname);
     return response;
   } catch (error) {
     console.error(error);
@@ -104,7 +99,6 @@ export const APIUpdateMeName = async (params: { token; fullname }) => {
         },
         body: JSON.stringify({ fullname }),
       });
-      console.log("Se actualizo el nombre");
       const response = await fetching.json();
       return response;
     } else {
@@ -117,7 +111,6 @@ export const APIUpdateMeName = async (params: { token; fullname }) => {
 };
 
 export const APIUpdatePassword = async (params: { password; token }) => {
-  //auth/password
   try {
     const { password, token } = params;
 
@@ -191,7 +184,6 @@ export const APIGetMePets = async (token) => {
       },
     });
     const response = await fetching.json();
-    console.log("traje las mascotas de este usuario");
     return response;
   } catch (error) {
     console.error(error);
@@ -231,7 +223,6 @@ export const APIUpdatePetData = async (dataForUpdate, token, petId) => {
       }
     );
     const response = await fetching.json();
-    console.log(response);
     return response;
   } catch (error) {
     console.error(error);

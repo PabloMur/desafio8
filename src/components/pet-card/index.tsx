@@ -2,9 +2,10 @@ import React from "react";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
-const PetCardComp = ({ nombre, zona, image, id }) => {
+const PetCardComp = ({ nombre, zona, image, id, ownerEmail }) => {
   function handleClick() {
     console.log(id);
+    console.log(ownerEmail);
   }
 
   return (
@@ -17,11 +18,9 @@ const PetCardComp = ({ nombre, zona, image, id }) => {
         <div className={css.zoneContainer}>
           <CustomText variant="p">Zona: {zona}</CustomText>
         </div>
-        <div>
-          <button className={css.infoButton} onClick={handleClick}>
-            <CustomText variant="p">Tengo informacion</CustomText>
-          </button>
-        </div>
+        <button className={css.infoButton} onClick={handleClick}>
+          <CustomText variant="p">Tengo informacion</CustomText>
+        </button>
       </div>
     </div>
   );

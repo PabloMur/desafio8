@@ -11,6 +11,8 @@ const PetsAround = () => {
   const petsResults = useRecoilValue(petsAround);
   const goTo = useGoTo();
 
+  console.log(petsResults);
+
   function handleClick() {
     goTo("/mapbox");
   }
@@ -28,7 +30,7 @@ const PetsAround = () => {
                 zona={pet.zone}
                 image={pet.image}
                 id={pet.objectID}
-                ownerEmail={pet.ownerEmail}
+                owner={"test"}
               ></PetCardComp>
             </li>
           ))}

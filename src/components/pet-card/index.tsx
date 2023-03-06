@@ -2,10 +2,10 @@ import React from "react";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
-const PetCardComp = ({ nombre, zona, image, id, ownerEmail }) => {
+const PetCardComp = ({ nombre, zona, image, id, owner }) => {
   function handleClick() {
     console.log(id);
-    console.log(ownerEmail);
+    console.log(owner);
   }
 
   return (

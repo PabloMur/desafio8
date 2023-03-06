@@ -22,11 +22,6 @@ class PetCard extends HTMLElement {
             <div class="name-and-zone">
               <h3 class="pet-name">${this.petName}</h3>
             </div>
-           <a href="/pets-around"> 
-            <div>
-              <button class="info-button">Ver Resultados</button>
-            </div>
-           </a>
           </div>
         </div>
       `;
@@ -86,19 +81,6 @@ class PetCard extends HTMLElement {
 
   addListeners() {
     this.render();
-    const button = this.querySelector(".info-button");
-    button.addEventListener("click", () => {
-      console.log(this.ownerEmail);
-      this.dispatchEvent(
-        new CustomEvent("report", {
-          detail: {
-            petName: this.petName,
-            ownerEmail: this.ownerEmail,
-          },
-          bubbles: true,
-        })
-      );
-    });
   }
   connectedCallback() {
     this.addListeners();

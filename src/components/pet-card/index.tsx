@@ -1,9 +1,12 @@
 import React from "react";
-import { MainButton } from "ui/buttons";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
-const PetCardComp = ({ nombre, zona, image }) => {
+const PetCardComp = ({ nombre, zona, image, id }) => {
+  function handleClick() {
+    console.log(id);
+  }
+
   return (
     <div className={css.root}>
       <div className={css.imageContainer}>
@@ -15,11 +18,9 @@ const PetCardComp = ({ nombre, zona, image }) => {
           <CustomText variant="p">Zona: {zona}</CustomText>
         </div>
         <div>
-          <a href="a">
-            <link rel="stylesheet" href="test">
-              <MainButton>ver en detalle</MainButton>
-            </link>
-          </a>
+          <button className={css.infoButton} onClick={handleClick}>
+            <CustomText variant="p">Tengo informacion</CustomText>
+          </button>
         </div>
       </div>
     </div>

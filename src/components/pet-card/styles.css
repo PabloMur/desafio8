@@ -14,13 +14,20 @@
 .petDataContainer {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   padding: 5px;
-  background-color: red;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+.infoButton {
+  color: white;
+  background-color: black;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  min-width: 100%;
 }

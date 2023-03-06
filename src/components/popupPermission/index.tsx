@@ -23,12 +23,12 @@ const PopupCartel = () => {
   // }, []);
   function cerrarPopUp() {
     setPopupAtom({ mostrado: false });
-    if (userLocation.lat !== 0 && userLocation.lng !== 0) goTo("/mapbox");
   }
 
   function aceptarUsoDePosicion() {
     position();
     setPopupAtom({ mostrado: false });
+    if (userLocation.lat !== 0 && userLocation.lng !== 0) goTo("/mapbox");
   }
 
   return (

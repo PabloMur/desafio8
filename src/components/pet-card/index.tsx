@@ -1,11 +1,19 @@
+import { petOwnerEmail, sigthingPetNameAtom } from "atoms/userAtoms";
+import { useGoTo } from "hooks/uiHooks";
 import React from "react";
+import { useSetRecoilState } from "recoil";
 import { CustomText } from "ui/custom-text";
 import css from "./styles.css";
 
 const PetCardComp = ({ nombre, zona, image, id, owner }) => {
+  const sigthingPetNameSetter = useSetRecoilState(sigthingPetNameAtom);
+  const petOwnerEmailSetter = useSetRecoilState(petOwnerEmail);
+  const goTo = useGoTo();
+
   function handleClick() {
-    console.log(id);
-    console.log(owner);
+    sigthingPetNameSetter(nombre);
+    petOwnerEmailSetter(owner);
+    goTo("/sigthing");
   }
 
   return (

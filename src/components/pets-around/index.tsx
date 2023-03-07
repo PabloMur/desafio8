@@ -30,7 +30,7 @@ const PetsAround = () => {
                 zona={pet.zone}
                 image={pet.image}
                 id={pet.objectID}
-                owner={"test"}
+                owner={pet.ownerEmail}
               ></PetCardComp>
             </li>
           ))}

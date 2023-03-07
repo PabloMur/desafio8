@@ -22,6 +22,7 @@ import {
   APIGetMePets,
   APIgetPetsAround,
   APIGetToken,
+  APISendInfoToPetOwner,
   APIUpdateMeName,
   APIUpdatePassword,
   APIUpdatePetData,
@@ -291,4 +292,17 @@ export function useGetPetZone(){
   return petZoneAtomCurrentValue
 }
 
+export function useSendPetOwnerEmail(){
+  const setterLoader = useLoader();
+
+  async function sendEmail (mensaje){
+    setterLoader({ mostrado: true });
+    const emailSent = await APISendInfoToPetOwner(mensaje)
+    if (emailSent){
+      setterLoader({ mostrado: false });
+      alert("Mensaje Enviado Correctamente")
+    }
+  }
+  return sendEmail
+}
 

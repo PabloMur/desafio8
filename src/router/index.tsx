@@ -12,6 +12,7 @@ import { SignupPage } from "pages/Signup";
 import { PasswordPage } from "pages/PasswordPage";
 import { NotFoundPage } from "pages/NotFoundPage";
 import { EditPetPage } from "pages/EditPet";
+import { Sigthing } from "pages/Sighting";
 
 function AppRoutes() {
   return (
@@ -27,6 +28,7 @@ function AppRoutes() {
         <Route path="signup" element={<SignupPage />}></Route>
         <Route path="password" element={<PasswordPage />}></Route>
         <Route path="edit-pet" element={<EditPetPage />}></Route>
+        <Route path="sigthing" element={<Sigthing />}></Route>
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
     </Routes>

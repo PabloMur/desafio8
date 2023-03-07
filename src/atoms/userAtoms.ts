@@ -131,3 +131,13 @@ export const editPetLongitudeAtom = atom({
   key:"editPetLongitudeAtom",
   default:0
 })
+
+export const sigthingPetNameAtom = atom({
+  key:"sigthingPetNameAtom",
+  default: ""
+})
+
+export const petOwnerEmail = atom({
+  key:"petOwnerEmail",
+  default: ""
+})

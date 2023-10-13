@@ -8,7 +8,7 @@ const Logo = () => {
     <Link to="/" className={css.link}>
       <div className={css.root}>
         <PataLogo></PataLogo>
-        <h3 className={css.appName}>Pet Finder</h3>
+        <h3 className={css.appName}>AnimalsCare</h3>
       </div>
     </Link>
   );
